@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:math' as math;
 import 'dart:ui';
@@ -19,146 +19,201 @@ class _PermissionScreenState extends State<PermissionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final cardWidth = math.min(345.0, size.width * 0.9);
-    
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          // Background decorations (Scaling with screen size)
-          Positioned(
-            top: -size.height * 0.15,
-            left: -size.width * 0.1,
-            child: Transform.rotate(
-              angle: -55 * (math.pi / 180),
-              child: Opacity(
-                opacity: 0.4,
-                child: Container(
-                  width: math.max(size.width * 2, 921.0),
-                  height: math.max(size.height * 1.5, 1200.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(64),
-                    gradient: const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Color(0x334C1D95), Color(0x338B5CF6)],
-                    ),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(64),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-                      child: Container(color: Colors.transparent),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          
-          // Main Permissions Card (Responsive centering)
-          Center(
-            child: SingleChildScrollView(
-              child: Container(
-                width: cardWidth,
-                margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFF8FAFC),
-                  borderRadius: BorderRadius.circular(24),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.08),
-                      blurRadius: 4,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      // Header Text
-                      Text(
-                        "Allow YugaiPay to access this\ndevice's location?",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xFF1A1D3A),
-                          height: 1.4,
+      body: Center(
+        child: FittedBox(
+          fit: BoxFit.contain,
+          child: SizedBox(
+            width: 393,
+            height: 852,
+            child: Stack(
+              children: [
+                // Large Rotated Decorative Background
+                Positioned(
+                  top: -130.52,
+                  left: -50,
+                  child: Transform.rotate(
+                    angle: -55 * (math.pi / 180),
+                    child: Opacity(
+                      opacity: 0.4,
+                      child: Container(
+                        width: 921.47,
+                        height: 1200.62,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(64),
+                          gradient: const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color(0x334C1D95), // rgba(76, 29, 149, 0.2)
+                              Color(0x338B5CF6), // rgba(139, 92, 246, 0.2)
+                            ],
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.08),
+                              blurRadius: 4,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(64),
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                            child: Container(color: Colors.transparent),
+                          ),
                         ),
                       ),
-                      const SizedBox(height: 19),
-                      Container(
-                        width: double.infinity,
-                        height: 0.25,
-                        color: const Color(0xFF94A3B8),
+                    ),
+                  ),
+                ),
+
+                // Second Rotated Decorative Background
+                Positioned(
+                  top: 250,
+                  left: -260,
+                  child: Transform.rotate(
+                    angle: -41.59 * (math.pi / 180),
+                    child: Opacity(
+                      opacity: 0.1,
+                      child: Container(
+                        width: 900.47,
+                        height: 450.10,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(24),
+                          gradient: const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color(0x334C1D95), // rgba(76, 29, 149, 0.2)
+                              Color(0x334C1D95), // rgba(76, 29, 149, 0.2)
+                            ],
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.18), // #0000002E
+                              blurRadius: 4,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(24),
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                            child: Container(color: Colors.transparent),
+                          ),
+                        ),
                       ),
-                      const SizedBox(height: 19),
-                      
-                      // Responsive Selection Row
-                      LayoutBuilder(
-                        builder: (context, constraints) {
-                          final itemWidth = (constraints.maxWidth - 20) / 2;
-                          return Row(
+                    ),
+                  ),
+                ),
+                
+                // Main Permissions Card
+                Center(
+                  child: Container(
+                    width: 345,
+                    height: 375,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFF8FAFC),
+                      borderRadius: BorderRadius.circular(24),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.08),
+                          blurRadius: 4,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 10),
+                      child: Column(
+                        children: [
+                          // Header Text
+                          SizedBox(
+                            width: 228,
+                            child: Text(
+                              "Allow YugaiPay to access this\ndevice's location?",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                color: const Color(0xFF1A1D3A),
+                                height: 1.4,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 19),
+                          // Divider Line
+                          Container(
+                            width: double.infinity,
+                            height: 0.25,
+                            color: const Color(0xFF94A3B8),
+                          ),
+                          const SizedBox(height: 19),
+                          
+                          // Permission Items Row
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              // Precise Item
                               _buildLocationOption(
                                 title: 'Precise',
                                 isSelected: isPreciseSelected,
                                 imagePath: 'assets/images/globemap.jpg',
-                                width: itemWidth,
                                 onTap: () => setState(() => isPreciseSelected = true),
                               ),
-                              const SizedBox(width: 20),
+                              const SizedBox(width: 40),
+                              // Approximate Item
                               _buildLocationOption(
                                 title: 'Approximate',
                                 isSelected: !isPreciseSelected,
                                 imagePath: 'assets/images/approximatemap.jpg',
-                                width: itemWidth,
                                 onTap: () => setState(() => isPreciseSelected = false),
                               ),
                             ],
-                          );
-                        },
-                      ),
-                      
-                      const SizedBox(height: 19),
-                      Container(
-                        width: double.infinity,
-                        height: 0.25,
-                        color: const Color(0xFF94A3B8),
-                      ),
-                      const SizedBox(height: 19),
-                      
-                      // Action Buttons
-                      Column(
-                        children: [
-                          _buildActionLink(
-                            text: 'While Using this app',
-                            onTap: () => _handlePermissionRequest(context),
                           ),
-                          const SizedBox(height: 16),
-                          _buildActionLink(
-                            text: 'Only this time',
-                            onTap: () => _handlePermissionRequest(context),
+                          
+                          const SizedBox(height: 19),
+                          // Divider Line
+                          Container(
+                            width: double.infinity,
+                            height: 0.25,
+                            color: const Color(0xFF94A3B8),
                           ),
-                          const SizedBox(height: 16),
-                          _buildActionLink(
-                            text: 'Don’t allow',
-                            onTap: () => Navigator.pop(context),
+                          const SizedBox(height: 19),
+                          
+                          // Action Buttons Column
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                _buildActionLink(
+                                  text: 'While Using this app',
+                                  onTap: () => _handlePermissionRequest(context),
+                                ),
+                                _buildActionLink(
+                                  text: 'Only this time',
+                                  onTap: () => _handlePermissionRequest(context),
+                                ),
+                                _buildActionLink(
+                                  text: 'Don’t allow',
+                                  onTap: () => Navigator.pop(context),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }
@@ -167,19 +222,17 @@ class _PermissionScreenState extends State<PermissionScreen> {
     required String title,
     required bool isSelected,
     required String imagePath,
-    required double width,
     required VoidCallback onTap,
   }) {
-    final imageSize = math.min(width, 100.0);
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        width: width,
+        width: 104,
         child: Column(
           children: [
             Container(
-              width: imageSize,
-              height: imageSize,
+              width: 100,
+              height: 100,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
@@ -226,23 +279,28 @@ class _PermissionScreenState extends State<PermissionScreen> {
   }
 
   Future<void> _handlePermissionRequest(BuildContext context) async {
+    // Check if running on Web to avoid PlatformChannel errors with permission_handler
     if (!kIsWeb) {
       try {
         final status = await Permission.locationWhenInUse.request();
-        if (status.isGranted && context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Location Permission Granted!')),
-          );
+        if (status.isGranted) {
+          if (context.mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Location Permission Granted!')),
+            );
+          }
         }
       } catch (e) {
-        debugPrint('Permission error: $e');
+        debugPrint('Permission request error: $e');
       }
     } else {
+      // On Web, we simulate the grant for the demo flow
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Permission requested (Simulated on Web)')),
       );
     }
-    
+
+    // Navigate to Permission Screen 2 regardless for testing flow
     if (context.mounted) {
       context.push(AppRoutes.permission2);
     }

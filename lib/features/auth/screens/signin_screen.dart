@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'otp_verification_screen.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class SigninScreen extends StatefulWidget {
+  const SigninScreen({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<SigninScreen> createState() => _SigninScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SigninScreenState extends State<SigninScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +61,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             width: 336,
                             height: 84,
                             child: Text(
-                              'Sign Up YugaiPay Partner',
+                              'Sign In YugaiPay Partner',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.poppins(
                                 fontSize: 32,
@@ -77,17 +76,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           // Internal Form Container
                           Container(
                             width: 345,
-                            padding: const EdgeInsets.only(top: 12), // Aligning content to top: 32 relative to Card (200)
+                            padding: const EdgeInsets.only(top: 12),
                             child: Column(
                               children: [
-                                // First Form Section (345 x 232, 26px gap)
+                                // First Form Section
                                 SizedBox(
                                   width: 345,
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Enter Your Aadhar-Linked\nMobile Number',
+                                        'Enter Your Registered\nMobile Number',
                                         style: GoogleFonts.poppins(
                                           fontSize: 20,
                                           fontWeight: FontWeight.w600,
@@ -96,7 +95,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         ),
                                       ),
                                       const SizedBox(height: 26),
-                                      // Custom Input Field with SVG
+                                      // Custom Input Field
                                       Container(
                                         width: 345,
                                         height: 61,
@@ -188,7 +187,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
         
-                // Tagline (538px from card top 200 = 738px absolute)
+                // Tagline 
                 Positioned(
                   top: 738,
                   left: 0,
@@ -205,7 +204,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
         
-                // Background Decorative Shape (Moved to front for visibility)
+                // Background Decorative Shape
                 Positioned(
                   top: 700,
                   left: -186,

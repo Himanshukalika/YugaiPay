@@ -9,157 +9,207 @@ class OnboardingScreen2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final cardWidth = math.min(345.0, size.width * 0.9);
-
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
-      body: Stack(
-        children: [
-          // Background/Logo Painter
-          Positioned.fill(
-            child: CustomPaint(
-              painter: OnboardingLogoPainter2(),
-            ),
-          ),
-          
-          // Back Button
-          Positioned(
-            top: MediaQuery.of(context).padding.top + 20,
-            left: 24,
-            child: GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: SvgPicture.string(
-                '''<svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M10 20L0 10L10 0L11.775 1.775L3.55 10L11.775 18.225L10 20Z" fill="#1A1D3A"/>
-</svg>''',
-                width: 24,
-                height: 24,
-                fit: BoxFit.scaleDown,
-              ),
-            ),
-          ),
-          
-          // Responsive Content
-          SafeArea(
-            child: Column(
+      body: Center(
+        child: FittedBox(
+          fit: BoxFit.contain,
+          child: SizedBox(
+            width: 393,
+            height: 852,
+            child: Stack(
               children: [
-                const SizedBox(height: 100),
-                // Title Area
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      style: GoogleFonts.poppins(
-                        color: const Color(0xFF1A1D3A),
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2,
-                      ),
-                      children: [
-                        const TextSpan(text: 'YugaiPay-'),
-                        TextSpan(
-                          text: 'Sakhi',
-                          style: GoogleFonts.poppins(
-                            fontStyle: FontStyle.italic,
-                            foreground: Paint()
-                              ..shader = const LinearGradient(
-                                colors: <Color>[
-                                  Color(0xFFD81B60),
-                                  Color(0x99FF4081),
-                                  Color(0xD6E82A6D),
-                                  Color(0xFFD81B60),
-                                ],
-                                stones: [0.0926, 0.3722, 0.6308, 0.714],
-                              ).createShader(
-                                const Rect.fromLTWH(200.0, 0.0, 100.0, 30.0),
-                              ),
-                          ),
-                        ),
-                      ],
-                    ),
+                // Background container
+                Container(
+                  width: 393,
+                  height: 852,
+                  color: const Color(0xFFF8FAFC),
+                ),
+                
+                // Logo with Cut Effect (Fixed positioning)
+                Positioned.fill(
+                  child: CustomPaint(
+                    painter: OnboardingLogoPainter2(),
                   ),
                 ),
-                const SizedBox(height: 12),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Opacity(
-                    opacity: 0.7,
-                    child: Text(
-                      'Comprehensive system for community mobilization, SHG operations, banking & credit linkage, livelihood management, monitoring, MIS, and compliance- from village to national level.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                        color: const Color(0xFF4A5568),
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        height: 1.4,
+        
+                // Top-Left Element (Back Button/Icon Placeholder)
+                Positioned(
+                  top: 66,
+                  left: 24,
+                  width: 24,
+                  height: 24,
+                  child: GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      color: Colors.transparent,
+                      child: SvgPicture.string(
+                        '''<svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 20L0 10L10 0L11.775 1.775L3.55 10L11.775 18.225L10 20Z" fill="#1A1D3A"/>
+        </svg>''',
+                        fit: BoxFit.scaleDown,
                       ),
                     ),
                   ),
                 ),
                 
-                const Spacer(),
-                
-                // Illustration
-                Center(
-                  child: SizedBox(
-                    width: cardWidth,
-                    height: cardWidth * 0.9,
-                    child: Image.asset(
-                      'assets/images/onboarding2.png',
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-                
-                const Spacer(),
-                
-                // Indicators
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _buildIndicator(isActive: false),
-                    const SizedBox(width: 7),
-                    _buildIndicator(isActive: true),
-                    const SizedBox(width: 7),
-                    _buildIndicator(isActive: false),
-                  ],
-                ),
-                
-                const SizedBox(height: 32),
-                
-                // Buttons
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Row(
+                // Content Container (Title & description)
+                Positioned(
+                  top: 175,
+                  left: 24,
+                  width: 345,
+                  height: 164,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      GestureDetector(
-                        onTap: () => Navigator.pop(context),
+                      RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          style: GoogleFonts.poppins(
+                            color: const Color(0xFF1A1D3A),
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                            height: 1.5,
+                          ),
+                          children: [
+                            const TextSpan(text: 'YugaiPay-'),
+                            TextSpan(
+                              text: 'Sakhi',
+                              style: GoogleFonts.poppins(
+                                fontStyle: FontStyle.italic,
+                                foreground: Paint()
+                                  ..shader = const LinearGradient(
+                                    colors: <Color>[
+                                      Color(0xFFD81B60),
+                                      Color(0x99FF4081),
+                                      Color(0xD6E82A6D),
+                                      Color(0xFFD81B60),
+                                    ],
+                                    stops: [0.0926, 0.3722, 0.6308, 0.714],
+                                  ).createShader(
+                                    const Rect.fromLTWH(200.0, 0.0, 100.0, 30.0),
+                                  ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Opacity(
+                        opacity: 0.7,
                         child: Text(
-                          'Skip',
-                          style: GoogleFonts.inter(
+                          'Comprehensive system for community mobilization, SHG operations, banking & credit linkage, livelihood management, monitoring, MIS, and compliance- from village to national level.',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            color: const Color(0xFF4A5568),
                             fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF64748B).withOpacity(0.8),
+                            fontWeight: FontWeight.w500,
+                            height: 1.2,
                           ),
                         ),
                       ),
-                      const Spacer(),
+                    ],
+                  ),
+                ),
+        
+                // Illustration Container
+                Positioned(
+                  top: 349,
+                  left: 24,
+                  width: 345,
+                  height: 340,
+                  child: Image.asset(
+                    'assets/images/onboarding2.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),
+        
+                // Page Indicators (Dots) - Placeholder
+                Positioned(
+                  top: 684,
+                  left: 184,
+                  width: 44,
+                  height: 10,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Inactive Dot 1
+                      Container(
+                        width: 10,
+                        height: 10,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color(0xFF64748B),
+                        ),
+                      ),
+                      const SizedBox(width: 7),
+                      // Active Dot 2
+                      Container(
+                        width: 10,
+                        height: 10,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color(0xFF0F172A),
+                        ),
+                      ),
+                      const SizedBox(width: 7),
+                      // Inactive Dot 3
+                      Container(
+                        width: 10,
+                        height: 10,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color(0xFF64748B),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+        
+                // Navigation Buttons (Placeholder)
+                Positioned(
+                  top: 731,
+                  left: 52,
+                  width: 295,
+                  height: 43,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 45,
+                        child: GestureDetector(
+                          onTap: () => Navigator.pop(context),
+                          child: Text(
+                            'Skip',
+                            style: GoogleFonts.inter(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0xFF64748B).withOpacity(0.8),
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
+                      ),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const OnboardingScreen3()),
+                            PageRouteBuilder(
+                              pageBuilder: (context, animation, secondaryAnimation) => const OnboardingScreen3(),
+                              transitionDuration: Duration.zero,
+                              reverseTransitionDuration: Duration.zero,
+                            ),
                           );
                         },
                         child: Container(
-                          width: cardWidth * 0.65,
-                          height: 48,
+                          width: 226,
+                          height: 43,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(24),
                             gradient: const LinearGradient(
                               colors: [Color(0xFFFF7A18), Color(0xFFFFB347)],
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
                             ),
                             boxShadow: [
                               BoxShadow(
@@ -183,12 +233,13 @@ class OnboardingScreen2 extends StatelessWidget {
                     ],
                   ),
                 ),
-                
-                const SizedBox(height: 24),
-                
-                // Footer
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
+        
+                // Tagline Footer
+                Positioned(
+                  top: 805,
+                  left: 24,
+                  width: 345,
+                  height: 15,
                   child: Text(
                     'Unified Digital Platform for NRLM SHG Management',
                     textAlign: TextAlign.center,
@@ -196,24 +247,14 @@ class OnboardingScreen2 extends StatelessWidget {
                       fontSize: 10,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFF1A1D3A).withOpacity(0.6),
+                      height: 1.0,
                     ),
                   ),
                 ),
               ],
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildIndicator({required bool isActive}) {
-    return Container(
-      width: 10,
-      height: 10,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: isActive ? const Color(0xFF0F172A) : const Color(0xFF64748B),
+        ),
       ),
     );
   }

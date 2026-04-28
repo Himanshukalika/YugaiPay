@@ -11,6 +11,8 @@ import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../features/auth/screens/loading_screen.dart';
 import '../../features/auth/screens/permission_screen.dart';
 import '../../features/auth/screens/permission_screen_2.dart';
+import '../../features/auth/screens/signin_screen.dart';
+import '../../features/auth/screens/login_screen.dart';
 import '../shell/main_shell.dart';
 
 class AppRoutes {
@@ -20,6 +22,7 @@ class AppRoutes {
   static const String loading = '/loading';
   static const String permission1 = '/permission1';
   static const String permission2 = '/permission2';
+  static const String login = '/login';
   static const String home = '/home';
   static const String send = '/send';
   static const String receive = '/receive';
@@ -63,15 +66,19 @@ final appRouter = GoRouter(
       path: AppRoutes.permission2,
       builder: (context, state) => const PermissionScreen2(),
     ),
+    GoRoute(
+      path: AppRoutes.login,
+      builder: (context, state) => const LoginScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.home,
+      builder: (context, state) => const HomeScreen(),
+    ),
     // Main Shell (bottom nav)
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) => MainShell(child: child),
       routes: [
-        GoRoute(
-          path: AppRoutes.home,
-          builder: (context, state) => const HomeScreen(),
-        ),
         GoRoute(
           path: AppRoutes.send,
           builder: (context, state) => const SendScreen(),

@@ -42,15 +42,21 @@ class _LoadingScreenState extends State<LoadingScreen> with SingleTickerProvider
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          // Main SVG Logo (Centered)
-          Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+      body: Center(
+        child: FittedBox(
+          fit: BoxFit.contain,
+          child: SizedBox(
+            width: 393,
+            height: 852,
+            child: Stack(
               children: [
-                SvgPicture.string(
-                  '''<svg width="220" height="119" viewBox="0 0 220 119" fill="none" xmlns="http://www.w3.org/2000/svg">
+                // Main SVG Logo (Centered)
+                Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SvgPicture.string(
+                        '''<svg width="220" height="119" viewBox="0 0 220 119" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_7_4602)">
 <path d="M117.258 52.6044C115.629 56.8862 110.938 58.7979 106.78 56.8749C106.087 56.5544 105.745 55.7165 106.016 55.0028L107.258 51.7353C107.806 51.9435 108.44 51.8336 108.917 51.3827L122.683 38.3456L117.258 52.6044ZM116.664 27.0194C118.293 22.7377 122.984 20.8251 127.142 22.748C127.835 23.0685 128.177 23.9074 127.906 24.621L123.449 36.3329C122.857 35.9912 122.107 36.0628 121.563 36.578L108.218 49.2138L116.664 27.0194ZM92.6969 23.7646C96.602 21.2789 101.508 22.5885 103.656 26.6894L108.29 35.538C110.437 39.6386 109.013 44.9779 105.108 47.4638C104.457 47.8781 103.639 47.6599 103.281 46.9765L92.1667 25.7519C91.8088 25.0684 92.0461 24.1788 92.6969 23.7646Z" fill="url(#paint0_linear_7_4602)"/>
 </g>
@@ -73,32 +79,35 @@ class _LoadingScreenState extends State<LoadingScreen> with SingleTickerProvider
 </linearGradient>
 </defs>
 </svg>''',
-                  width: 220,
-                  height: 119,
-                ),
-                const SizedBox(height: 20),
-                // Responsive Spinner Position
-                Transform.translate(
-                  offset: Offset(0, -MediaQuery.of(context).size.height * 0.15),
-                  child: RotationTransition(
-                    turns: _controller,
-                    child: Container(
-                      width: 80,
-                      height: 80,
-                      decoration: const BoxDecoration(
-                        color: Colors.transparent,
-                        shape: BoxShape.circle,
+                        width: 220,
+                        height: 119,
                       ),
-                      child: CustomPaint(
-                        painter: ConicSpinnerPainter(),
+                      const SizedBox(height: 20),
+                      // New 80x80 Conic Gradient Spinner
+                      Transform.translate(
+                        offset: const Offset(0, -140),
+                        child: RotationTransition(
+                          turns: _controller,
+                          child: Container(
+                            width: 80,
+                            height: 80,
+                            decoration: const BoxDecoration(
+                              color: Colors.transparent,
+                              shape: BoxShape.circle,
+                            ),
+                            child: CustomPaint(
+                              painter: ConicSpinnerPainter(),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }

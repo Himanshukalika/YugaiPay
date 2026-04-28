@@ -9,90 +9,93 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final cardWidth = math.min(345.0, size.width * 0.9);
-
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
-      body: Stack(
-        children: [
-          // Background/Logo Painter
-          Positioned.fill(
-            child: CustomPaint(
-              painter: OnboardingLogoPainter(),
-            ),
-          ),
-          
-          // Responsive Content
-          SafeArea(
-            child: Column(
+      backgroundColor: const Color(0xFFF8FAFC), // rgba(248, 250, 252, 1)
+      body: Center(
+        child: FittedBox(
+          fit: BoxFit.contain,
+          child: SizedBox(
+            width: 393,
+            height: 852,
+            child: Stack(
               children: [
-                const SizedBox(height: 20),
-                // Title Section
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Builder(
-                    builder: (context) {
-                      final Shader textShader = const LinearGradient(
-                        colors: <Color>[Color(0xFFFFA143), Color(0xFFF43B5E)],
-                      ).createShader(const Rect.fromLTWH(0.0, 0.0, 300.0, 70.0));
-                      
-                      return RichText(
-                        textAlign: TextAlign.center,
-                        text: TextSpan(
-                          style: GoogleFonts.poppins(
-                            color: const Color(0xFF0F172A),
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                            height: 1.2,
-                          ),
-                          children: [
-                            const TextSpan(text: 'YugaiPay-'),
-                            TextSpan(
-                              text: 'Banking Services',
-                              style: GoogleFonts.poppins(
-                                fontStyle: FontStyle.italic,
-                                foreground: Paint()..shader = textShader,
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
+                // Background container
+                Container(
+                  width: 393,
+                  height: 852,
+                  color: const Color(0xFFF8FAFC),
+                ),
+                
+                // Logo with Cut Effect (Fixed positioning)
+                Positioned.fill(
+                  child: CustomPaint(
+                    painter: OnboardingLogoPainter(),
                   ),
                 ),
-                const SizedBox(height: 16),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Opacity(
-                    opacity: 0.7,
-                    child: Text(
-                      'Access AEPS, DMT, Utility Bill Payments, Mobile & DTH Recharge, Travel Booking, Loans, Insurance, Investments, and Accounting Solutions- all in one unified platform.',
+                
+                // Content Container
+                Positioned(
+                  top: 175,
+                  left: 24,
+                  width: 393 - 48,
+                  child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Builder(
+                  builder: (context) {
+                    final Shader textShader = const LinearGradient(
+                      colors: <Color>[Color(0xFFFFA143), Color(0xFFF43B5E)],
+                    ).createShader(const Rect.fromLTWH(0.0, 0.0, 300.0, 70.0));
+                    
+                    return RichText(
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(
-                        color: const Color(0xFF4A5568),
-                        fontSize: 14, // Slightly smaller for better fit
-                        fontWeight: FontWeight.w500,
-                        height: 1.4,
+                      text: TextSpan(
+                        style: GoogleFonts.poppins(
+                          color: const Color(0xFF0F172A),
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                          height: 1.0,
+                        ),
+                        children: [
+                          const TextSpan(text: 'YugaiPay-'),
+                          TextSpan(
+                            text: 'Banking Services',
+                            style: GoogleFonts.poppins(
+                              fontStyle: FontStyle.italic,
+                              foreground: Paint()..shader = textShader,
+                            ),
+                          ),
+                        ],
                       ),
+                    );
+                  },
+                ),
+                const SizedBox(height: 16),
+                Opacity(
+                  opacity: 0.7,
+                  child: Text(
+                    'Access AEPS, DMT, Utility Bill Payments, Mobile & DTH Recharge, Travel Booking, Loans, Insurance, Investments, and Accounting Solutions- all in one unified platform.',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      color: const Color(0xFF4A5568), // rgba(74, 85, 104, 1)
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      height: 1.2, // Increased slightly for better readability than 1.0
                     ),
                   ),
                 ),
-                const Spacer(),
-                
-                // Illustration (Scaled)
-                Center(
-                  child: SizedBox(
-                    width: cardWidth,
-                    height: cardWidth,
-                    child: FittedBox(
-                      fit: BoxFit.contain,
-                      child: SizedBox(
-                        width: 345,
-                        height: 345,
-                        child: Stack(
-                          children: [
-                            // ... illustration nodes ...
+              ],
+            ),
+          ),
+
+          // Main Illustration Container
+          Positioned(
+            top: 333,
+            left: 24,
+            width: 345,
+            height: 345,
+            child: Stack(
+              children: [
                 // One Hundred and Seventy-third Design Element (Light Gray Ellipse) - MOVED TO BACK
                 Positioned(
                   top: 286.94,
@@ -2479,11 +2482,12 @@ class OnboardingScreen extends StatelessWidget {
             ),
           ),
 
-          // Page Indicators
+          // Page Indicators (Dots)
           Positioned(
-            bottom: 120, // Use bottom instead of fixed top
-            left: 0,
-            right: 0,
+            top: 684,
+            left: 184,
+            width: 44,
+            height: 10,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -2522,72 +2526,105 @@ class OnboardingScreen extends StatelessWidget {
 
           // Navigation Buttons
           Positioned(
-            bottom: 60,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: Container(
-                width: math.min(size.width * 0.85, 300),
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        // Skip
-                      },
-                      child: Text(
-                        'Skip',
-                        style: GoogleFonts.inter(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xFF64748B).withOpacity(0.8),
-                        ),
+            top: 731,
+            left: 52,
+            width: 295,
+            height: 43,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: 45,
+                  child: GestureDetector(
+                    onTap: () {
+                      // TODO: Implement Navigation to Onboarding Screen 4
+                      // Animate: Push Right, ease-out, 300ms
+                    },
+                    child: Text(
+                      'Skip',
+                      style: GoogleFonts.inter(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: const Color(0xFF64748B).withOpacity(0.8),
                       ),
+                      textAlign: TextAlign.left,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const OnboardingScreen2()),
-                        );
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(24),
-                          gradient: const LinearGradient(
-                            colors: [Color(0xFFFF7A18), Color(0xFFFFB347)],
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color(0xFFFF7A18).withOpacity(0.3),
-                              blurRadius: 12,
-                              offset: const Offset(0, 4),
-                            ),
-                          ],
-                        ),
-                        child: Text(
-                          'Next',
-                          style: GoogleFonts.inter(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                // "Next" Button
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) => const OnboardingScreen2(),
+                        transitionDuration: Duration.zero,
+                        reverseTransitionDuration: Duration.zero,
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 226,
+                    height: 43,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(24),
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFFFF7A18), Color(0xFFFFB347)],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(0xFFFF7A18).withOpacity(0.3),
+                          blurRadius: 12,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    alignment: Alignment.center,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: 10,
+                          left: 94,
+                          width: 115,
+                          height: 24,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Next',
+                                style: GoogleFonts.inter(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              SvgPicture.string(
+                                '''<svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.6 6L0 1.4L1.4 0L7.4 6L1.4 12L0 10.6L4.6 6Z" fill="white"/>
+</svg>''',
+                                width: 24,
+                                height: 24,
+                                fit: BoxFit.scaleDown,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
 
           // Tagline Footer
           Positioned(
-            bottom: 24,
-            left: 0,
-            right: 0,
+            top: 805,
+            left: 24,
+            width: 345,
+            height: 15,
             child: Text(
               'Complete Digital Banking & Financial Services Platform',
               textAlign: TextAlign.center,
@@ -2595,10 +2632,14 @@ class OnboardingScreen extends StatelessWidget {
                 fontSize: 10,
                 fontWeight: FontWeight.w500,
                 color: const Color(0xFF1A1D3A).withOpacity(0.6),
+                height: 1.0,
               ),
             ),
           ),
         ],
+            ),
+          ),
+        ),
       ),
     );
   }
