@@ -340,9 +340,9 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                     // 5.2.1.3.2 "More" Button
                                     GestureDetector(
-                                      onTap: () {
-                                        // TODO: Navigate to "Banking Services Screen"
-                                      },
+                                        onTap: () {
+                                          context.push(AppRoutes.bankingServices);
+                                        },
                                       child: Container(
                                         width: 18.32 * vw, // ~72px
                                         height: 3.75 * vh, // ~32px
@@ -446,10 +446,10 @@ class HomeScreen extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              GestureDetector(
-                                onTap: () {
-                                  // Navigate to: "Payment & Transfers Screen"
-                                },
+                                GestureDetector(
+                                  onTap: () {
+                                    context.push(AppRoutes.paymentTransfers);
+                                  },
                                 child: Container(
                                   width: 18.32 * vw, // ~72px
                                   height: 3.76 * vh, // ~32px
@@ -552,7 +552,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  // Navigate to: "Loan Services Screen"
+                                  context.push(AppRoutes.loanServices);
                                 },
                                 child: Container(
                                   width: 18.32 * vw, // ~72px

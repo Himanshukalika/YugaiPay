@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class BankingServicesScreen extends StatelessWidget {
-  const BankingServicesScreen({super.key});
+class LoanServicesScreen extends StatelessWidget {
+  const LoanServicesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,9 @@ class BankingServicesScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Color(0xFF1E233A)),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         actions: [
           IconButton(
@@ -49,127 +51,134 @@ class BankingServicesScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 10),
-                  Text(
-                    'Banking Services',
-                    style: GoogleFonts.poppins(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: const Color(0xFF1A1D3A),
-                      height: 22 / 16,
-                      letterSpacing: 0,
-                    ),
+                  
+
+                  // Retail Loans Section
+                  _buildSectionTitle('Retail Loans'),
+                  const SizedBox(height: 16),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildServiceIcon(
+                        title: 'Personal\nLoan',
+                        imagePath: 'assets/icon/png/Personal_Loan.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'Gold Loan',
+                        imagePath: 'assets/icon/png/home.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'Home Loan',
+                        imagePath: 'assets/icon/png/home.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'Loan Against\nProperty',
+                        imagePath: 'assets/icon/png/Loan_Against_Property.png',
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 24),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildServiceIcon(
+                        title: 'Micro Loan',
+                        imagePath: 'assets/icon/png/MSME_Loan.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'Salary Loan',
+                        imagePath: 'assets/icon/png/Salary_Loan.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'Education\nLoan',
+                        imagePath: 'assets/icon/png/Education_Loan.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'Consumer\nDurabale\nLoan',
+                        imagePath: 'assets/icon/png/Consumer_Durabale_Loan.png',
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 32),
 
-                  // AEPS Section
-                  _buildSectionTitle('AEPS'),
+                  // Vehicle Loans Section
+                  _buildSectionTitle('Vehicle Loans'),
                   const SizedBox(height: 16),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       _buildServiceIcon(
-                        title: 'Cash\nWithdrawal',
-                        imagePath: 'assets/icon/png/Cash_Withdrawal.png',
+                        title: 'Car Loan',
+                        imagePath: 'assets/icon/png/car.png',
                       ),
                       _buildServiceIcon(
-                        title: 'Balance\nInquiry',
-                        imagePath: 'assets/icon/png/Balance_Inquiry.png',
+                        title: 'Bike Loan',
+                        imagePath: 'assets/icon/png/bike.png',
                       ),
                       _buildServiceIcon(
-                        title: 'Mini\nStatement',
-                        imagePath: 'assets/icon/png/Mini_Statement.png',
+                        title: 'Commercial\nVehicle Loan',
+                        imagePath: 'assets/icon/png/bike.png',
                       ),
                       _buildServiceIcon(
-                        title: 'Deposit',
-                        imagePath: 'assets/icon/png/Deposit.png',
+                        title: 'Machinery\nLoan',
+                        imagePath: 'assets/icon/png/bike.png',
                       ),
                     ],
                   ),
                   const SizedBox(height: 32),
 
-                  // Micro ATM Services Section
-                  _buildSectionTitle('Micro ATM Services'),
+                  // Business & MSME Loans Section
+                  _buildSectionTitle('Business & MSME Loans'),
                   const SizedBox(height: 16),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       _buildServiceIcon(
-                        title: 'Cash\nWithdrawal',
-                        imagePath: 'assets/icon/png/Cash_Withdrawal.png',
+                        title: 'Business\nLoan',
+                        imagePath: 'assets/icon/png/Personal_Loan.png',
                       ),
                       _buildServiceIcon(
-                        title: 'Balance\nInquiry',
-                        imagePath: 'assets/icon/png/Balance_Inquiry.png',
+                        title: 'MSME Loan',
+                        imagePath: 'assets/icon/png/MSME_Loan.png',
                       ),
                       _buildServiceIcon(
-                        title: 'Mini\nStatement',
-                        imagePath: 'assets/icon/png/Mini_Statement.png',
+                        title: 'Working Capital\nLoan',
+                        imagePath: 'assets/icon/png/MSME_Loan.png',
                       ),
                       _buildServiceIcon(
-                        title: 'Deposit',
-                        imagePath: 'assets/icon/png/Deposit.png',
+                        title: 'Credit Line\nFacility',
+                        imagePath: 'assets/icon/png/Credit_Facility.png',
                       ),
                     ],
                   ),
                   const SizedBox(height: 32),
 
-                  // Aadhaar Pay and CMS Section
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _buildSectionTitle('Aadhaar Pay'),
-                            const SizedBox(height: 16),
-                            _buildServiceIcon(
-                              title: 'Cash\nWithdrawal',
-                              imagePath: 'assets/icon/png/Cash_Withdrawal.png',
-                            ),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _buildSectionTitle('CMS'),
-                            const SizedBox(height: 16),
-                            _buildServiceIcon(
-                              title: 'Cash\nManagement\nServices',
-                              imagePath: 'assets/icon/png/CMS.png',
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 32),
-
-                  // Open Bank Account Section
-                  _buildSectionTitle('Open Bank Account'),
+                  // Agriculture & Green Financing Section
+                  _buildSectionTitle('Agriculture & Green Financing'),
                   const SizedBox(height: 16),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       _buildServiceIcon(
-                        title: 'Savings Account\nOpening',
-                        imagePath: 'assets/icon/png/Savings_Account_Opening.png',
-                        width: 100,
+                        title: 'Agriculture\nInfra Loan',
+                        imagePath: 'assets/icon/png/Agriculture_Loan.png',
                       ),
                       _buildServiceIcon(
-                        title: 'Credit Card\nSourcing',
-                        imagePath: 'assets/icon/png/Credit_Card_Sourcing.png',
-                        width: 100,
+                        title: 'Kisan Credit\nCard (KCC)',
+                        imagePath: 'assets/icon/png/Agriculture_Loan.png',
                       ),
                       _buildServiceIcon(
-                        title: 'Current Account\nOpening',
-                        imagePath: 'assets/icon/png/Current_Account_Opening.png',
-                        width: 100,
+                        title: 'Rural Enterprise\nLoan',
+                        imagePath: 'assets/icon/png/Rural_Enterprise.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'Solar Loan',
+                        imagePath: 'assets/icon/png/Solar_Loan.png',
                       ),
                     ],
                   ),
@@ -261,7 +270,9 @@ class BankingServicesScreen extends StatelessWidget {
   Widget _buildServiceIcon({
     required String title,
     required String imagePath,
-    double width = 80,
+    double width = 76,
+    bool isPlaceholder = false,
+    String placeholderText = '',
   }) {
     return SizedBox(
       width: width,
@@ -274,9 +285,28 @@ class BankingServicesScreen extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: const Color(0xFFCBE0FF), width: 1.2),
+              // Light orange border for loan services
+              border: Border.all(color: const Color(0xFFFFEDD5), width: 1.2),
             ),
-            child: Image.asset(imagePath, fit: BoxFit.contain),
+            child: isPlaceholder 
+                ? Center(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: const Color(0xFFF0941F), width: 1),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Text(
+                        placeholderText, 
+                        style: GoogleFonts.poppins(
+                          fontSize: 8, 
+                          fontWeight: FontWeight.w600, 
+                          color: const Color(0xFFF0941F)
+                        ),
+                      ),
+                    ),
+                  )
+                : Image.asset(imagePath, fit: BoxFit.contain),
           ),
           const SizedBox(height: 8),
           Text(
