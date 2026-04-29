@@ -13,6 +13,7 @@ import '../../features/auth/screens/permission_screen.dart';
 import '../../features/auth/screens/permission_screen_2.dart';
 import '../../features/auth/screens/signin_screen.dart';
 import '../../features/auth/screens/login_screen.dart';
+import '../../features/investment/screens/investment_screen.dart';
 import '../shell/main_shell.dart';
 
 class AppRoutes {
@@ -28,6 +29,7 @@ class AppRoutes {
   static const String receive = '/receive';
   static const String history = '/history';
   static const String profile = '/profile';
+  static const String investment = '/investment';
 }
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -73,6 +75,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.home,
       builder: (context, state) => const HomeScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.investment,
+      builder: (context, state) => const InvestmentScreen(),
     ),
     // Main Shell (bottom nav)
     ShellRoute(
