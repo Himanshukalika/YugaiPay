@@ -132,6 +132,7 @@ class InvestmentScreen extends StatelessWidget {
                               alignment: Alignment.centerLeft,
                               padding: EdgeInsets.only(left: 3.31 * vw), // ~13px padding
                               child: Stack(
+                                clipBehavior: Clip.none,
                                 children: [
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -159,7 +160,7 @@ class InvestmentScreen extends StatelessWidget {
                                   ),
                                   Positioned(
                                     top: 4.81 * vh, // ~41px
-                                    left: 21.0 * vw, // Moved left
+                                    left: 24.94 * vw, // ~111px - relative to the card's padding?
                                     // Actually, left: 111px absolute in a 164px wide container.
                                     // Since there is 13px padding, we subtract 13?
                                     // Or just use the absolute position from the Stack start.
@@ -183,6 +184,54 @@ class InvestmentScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(4.58 * vw), // ~18px
                                 border: Border.all(color: const Color(0xFFEBEBEB), width: 1),
                               ),
+                              child: Stack(
+                                clipBehavior: Clip.none,
+                                children: [
+                                  Positioned(
+                                    top: 0.82 * vh, // ~7px
+                                    left: 3.56 * vw, // ~14px
+                                    child: Container(
+                                      width: 28.50 * vw, // ~112px
+                                      // height removed to fix overflow
+                                      alignment: Alignment.centerLeft,
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Monthly Savings',
+                                            style: GoogleFonts.poppins(
+                                              fontSize: 2.54 * vw, // ~10px
+                                              fontWeight: FontWeight.w700,
+                                              color: const Color(0xFF1A1D3A),
+                                              height: 1.2, // Reduced from 2.2
+                                            ),
+                                          ),
+                                          Text(
+                                            'Steady gold savings',
+                                            style: GoogleFonts.poppins(
+                                              fontSize: 2.54 * vw, // ~10px
+                                              fontWeight: FontWeight.w400,
+                                              color: const Color(0xFF4A5568),
+                                              height: 2.2, // 22/10 = 2.2
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    top: 4.93 * vh, // ~42px
+                                    left: 28.50 * vw, // ~112px
+                                    child: Image.asset(
+                                      'assets/images/Gold.png',
+                                      width: 7.63 * vw, // ~30px
+                                      height: 3.52 * vh, // ~30px
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -190,6 +239,171 @@ class InvestmentScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 1.88 * vh), // ~16px gap for the next item
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: 57.75 * vh, // ~492px (141 + 335 + 16)
+            left: 6.11 * vw, // ~24px
+            child: Container(
+              width: 87.79 * vw, // ~345px
+              // height removed to fix overflow
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Silver Savings',
+                    style: GoogleFonts.poppins(
+                      fontSize: 4.07 * vw, // ~16px
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xFF1A1D3A),
+                      height: 1.0, // 100%
+                    ),
+                  ),
+                  SizedBox(height: 3.99 * vh), // ~34px gap
+                  Container(
+                    width: 87.79 * vw, // ~345px
+                    height: 10.68 * vh, // ~91px
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: 22.65 * vw, // ~89px
+                          height: 10.68 * vh, // ~91px
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 13.23 * vw, // ~52px
+                                height: 6.10 * vh, // ~52px
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFFFFFFF),
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: const Color(0xFFEBEBEB), width: 1),
+                                ),
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      top: 1.29 * vh, // ~11px
+                                      left: 2.93 * vw, // ~11.5px
+                                      child: Image.asset(
+                                        'assets/images/Save_Daily.png',
+                                        width: 7.63 * vw, // ~30px
+                                        height: 3.52 * vh, // ~30px
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 0.94 * vh), // Increased to ~8px
+                              Text(
+                                'Save\nDaily',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 2.54 * vw, // ~10px
+                                  fontWeight: FontWeight.w700,
+                                  color: const Color(0xFF1A1D3A),
+                                  height: 1.5, // Increased from 1.0
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 28.75 * vw, // ~113px
+                          height: 10.68 * vh, // ~91px
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 13.23 * vw, // ~52px
+                                height: 6.10 * vh, // ~52px
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFFFFFFF),
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: const Color(0xFFEBEBEB), width: 1),
+                                ),
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      top: 1.29 * vh, // ~11px
+                                      left: 2.93 * vw, // ~11.5px
+                                      child: Image.asset(
+                                        'assets/images/Save_mon.png',
+                                        width: 7.63 * vw, // ~30px
+                                        height: 3.52 * vh, // ~30px
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 0.94 * vh), // Increased to ~8px
+                              Text(
+                                'Save\nMonthly',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 2.54 * vw, // ~10px
+                                  fontWeight: FontWeight.w700,
+                                  color: const Color(0xFF1A1D3A),
+                                  height: 1.5, // Increased from 1.0
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 18.83 * vw, // ~74px
+                          height: 10.68 * vh, // ~91px
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 13.23 * vw, // ~52px
+                                height: 6.10 * vh, // ~52px
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFFFFFFF),
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: const Color(0xFFEBEBEB), width: 1),
+                                ),
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      top: 1.29 * vh, // ~11px
+                                      left: 2.93 * vw, // ~11.5px
+                                      child: Image.asset(
+                                        'assets/images/Silver.png',
+                                        width: 7.63 * vw, // ~30px
+                                        height: 3.52 * vh, // ~30px
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 0.94 * vh), // Increased to ~8px
+                              Text(
+                                'Buy\nSilver',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 2.54 * vw, // ~10px
+                                  fontWeight: FontWeight.w700,
+                                  color: const Color(0xFF1A1D3A),
+                                  height: 1.5, // Increased from 1.0
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
