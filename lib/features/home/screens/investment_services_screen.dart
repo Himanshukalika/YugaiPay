@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/router/app_router.dart';
 
-class BankingServicesScreen extends StatelessWidget {
-  const BankingServicesScreen({super.key});
+class InvestmentServicesScreen extends StatelessWidget {
+  const InvestmentServicesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class BankingServicesScreen extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: [
-                    const Color(0xFFF0F4FF).withValues(alpha: 0.6),
+                    const Color(0xFFF0F9FF).withValues(alpha: 0.6),
                     Colors.white.withValues(alpha: 0.0),
                   ],
                 ),
@@ -59,7 +59,7 @@ class BankingServicesScreen extends StatelessWidget {
                   
                   // Main Title
                   Text(
-                    'Banking Services',
+                    'Investment Services',
                     style: GoogleFonts.poppins(
                       fontSize: 4.07 * vw, // 16px
                       fontWeight: FontWeight.w700,
@@ -68,52 +68,67 @@ class BankingServicesScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 3 * vh),
 
-                  // AEPS Section
-                  _buildSection(vw, vh, 'AEPS', [
-                    _ServiceData('Cash\nWithdrawal', 'assets/images/cash_with.png'),
-                    _ServiceData('Balance\nInquiry', 'assets/images/balance_enq.png'),
-                    _ServiceData('Mini\nStatement', 'assets/images/mini_stat.png'),
-                    _ServiceData('Deposit', 'assets/images/deposit.png'),
-                  ], const Color(0xFF2F6FED)),
-
-                  SizedBox(height: 4 * vh),
-
-                  // Micro ATM Services Section
-                  _buildSection(vw, vh, 'Micro ATM Services', [
-                    _ServiceData('Cash\nWithdrawal', 'assets/images/cash_with.png'),
-                    _ServiceData('Balance\nInquiry', 'assets/images/balance_enq.png'),
-                    _ServiceData('Mini\nStatement', 'assets/images/mini_stat.png'),
-                    _ServiceData('Deposit', 'assets/images/deposit.png'),
-                  ], const Color(0xFF2F6FED)),
-
-                  SizedBox(height: 4 * vh),
-
-                  // Aadhaar Pay and CMS Section
+                  // Gold Savings Section
+                  _buildSectionHeading(vw, 'Gold Savings'),
+                  SizedBox(height: 2 * vh),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      // Daily Savings Card (Large)
                       Expanded(
-                        child: _buildSection(vw, vh, 'Aadhaar Pay', [
-                          _ServiceData('Cash\nWithdrawal', 'assets/images/cash_with.png'),
-                        ], const Color(0xFF2F6FED), isSmall: true),
+                        flex: 5,
+                        child: _buildInvestmentCard(
+                          vw,
+                          'Daily Savings',
+                          'Start saving as low\nas ₹ 10 per day',
+                          'assets/icon/png/investment/Daily_Savings.png',
+                          height: 22 * vh,
+                        ),
                       ),
+                      SizedBox(width: 3 * vw),
+                      // Right Column for Buy Gold and Monthly Savings
                       Expanded(
-                        child: _buildSection(vw, vh, 'CMS', [
-                          _ServiceData('Cash\nManagement\nServices', 'assets/images/deposit.png'),
-                        ], const Color(0xFF2F6FED), isSmall: true),
+                        flex: 4,
+                        child: Column(
+                          children: [
+                            _buildInvestmentCard(
+                              vw,
+                              'Buy Gold',
+                              'One time gold savings',
+                              'assets/icon/png/investment/buy_gold.png',
+                              height: 10.5 * vh,
+                              isCompact: true,
+                            ),
+                            SizedBox(height: 1 * vh),
+                            _buildInvestmentCard(
+                              vw,
+                              'Monthly Savings',
+                              'Steady gold savings',
+                              'assets/icon/png/investment/Monthly_Savings.png',
+                              height: 10.5 * vh,
+                              isCompact: true,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
 
                   SizedBox(height: 4 * vh),
 
-                  // Open Bank Account Section
-                  _buildSection(vw, vh, 'Open Bank Account', [
-                    _ServiceData('Savings Account\nOpening', 'assets/images/cash_with.png'),
-                    _ServiceData('Credit Card\nSourcing', 'assets/images/cash_with.png'),
-                    _ServiceData('Current Account\nOpening', 'assets/images/cash_with.png'),
-                  ], const Color(0xFF2F6FED)),
-                  
+                  // Silver Savings Section
+                  _buildSectionHeading(vw, 'Silver Savings'),
+                  SizedBox(height: 2 * vh),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildCircularItem(vw, 'Save\nDaily', 'assets/icon/png/investment/Save_Daily.png', const Color(0xFF14B8A6)),
+                      _buildCircularItem(vw, 'Save\nMonthly', 'assets/icon/png/investment/Save_Monthly.png', const Color(0xFF14B8A6)),
+                      _buildCircularItem(vw, 'Buy\nSilver', 'assets/icon/png/investment/Buy_Silver.png', const Color(0xFF14B8A6)),
+                      SizedBox(width: 18 * vw), // Spacer to match grid alignment
+                    ],
+                  ),
+
                   SizedBox(height: 5 * vh),
                 ],
               ),
@@ -124,38 +139,75 @@ class BankingServicesScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSection(double vw, double vh, String title, List<_ServiceData> services, Color themeColor, {bool isSmall = false}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: GoogleFonts.poppins(
-            fontSize: 4.07 * vw, // 16px
-            fontWeight: FontWeight.w600,
-            color: const Color(0xFF1A1D3A),
-          ),
-        ),
-        SizedBox(height: 2 * vh),
-        if (isSmall)
-          _buildServiceItem(vw, services[0], themeColor)
-        else
-          Wrap(
-            spacing: 5 * vw,
-            runSpacing: 3 * vh,
-            children: services.map((s) => _buildServiceItem(vw, s, themeColor)).toList(),
-          ),
-      ],
+  Widget _buildSectionHeading(double vw, String title) {
+    return Text(
+      title,
+      style: GoogleFonts.poppins(
+        fontSize: 4.07 * vw, // 16px
+        fontWeight: FontWeight.w600,
+        color: const Color(0xFF1A1D3A),
+      ),
     );
   }
 
-  Widget _buildServiceItem(double vw, _ServiceData data, Color themeColor) {
+  Widget _buildInvestmentCard(double vw, String title, String subtitle, String assetPath, {required double height, bool isCompact = false}) {
+    return Container(
+      height: height,
+      padding: EdgeInsets.all(isCompact ? 2.5 * vw : 4 * vw),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(6 * vw), // 24px
+        border: Border.all(color: const Color(0xFFEBEBEB), width: 1),
+      ),
+      child: Stack(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: GoogleFonts.poppins(
+                  fontSize: 3.05 * vw, // 12px
+                  fontWeight: FontWeight.w700,
+                  color: const Color(0xFF1A1D3A),
+                  height: 1.2,
+                ),
+              ),
+              SizedBox(height: 0.5 * vw),
+              Text(
+                subtitle,
+                style: GoogleFonts.poppins(
+                  fontSize: 2.03 * vw, // 8px
+                  fontWeight: FontWeight.w400,
+                  color: const Color(0xFF717171),
+                  height: 1.2,
+                ),
+              ),
+            ],
+          ),
+          Positioned(
+            right: 0,
+            bottom: 0,
+            child: Image.asset(
+              assetPath,
+              width: isCompact ? 10 * vw : 15 * vw,
+              height: isCompact ? 10 * vw : 15 * vw,
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) => Icon(Icons.currency_exchange, color: const Color(0xFF14B8A6), size: 10 * vw),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCircularItem(double vw, String label, String assetPath, Color themeColor) {
     return SizedBox(
-      width: 18 * vw, // ~70px
+      width: 18 * vw,
       child: Column(
         children: [
           Container(
-            width: 14 * vw, // ~55px
+            width: 14 * vw,
             height: 14 * vw,
             decoration: BoxDecoration(
               color: Colors.white,
@@ -164,19 +216,20 @@ class BankingServicesScreen extends StatelessWidget {
             ),
             child: Center(
               child: Image.asset(
-                data.imagePath,
+                assetPath,
                 width: 7 * vw,
                 height: 7 * vw,
                 fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) => Icon(Icons.savings_outlined, color: themeColor, size: 7 * vw),
               ),
             ),
           ),
           const SizedBox(height: 8),
           Text(
-            data.title,
+            label,
             textAlign: TextAlign.center,
             style: GoogleFonts.poppins(
-              fontSize: 2.54 * vw, // ~10px
+              fontSize: 2.54 * vw, // 10px
               fontWeight: FontWeight.w500,
               color: const Color(0xFF1A1D3A),
               height: 1.2,
@@ -232,10 +285,4 @@ class BankingServicesScreen extends StatelessWidget {
       ],
     );
   }
-}
-
-class _ServiceData {
-  final String title;
-  final String imagePath;
-  _ServiceData(this.title, this.imagePath);
 }

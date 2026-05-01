@@ -56,3 +56,5 @@ flutter:
   assets:
     - assets/images/
     - assets/icon/png/
+    - assets/icon/png/insurance/
+    - assets/icon/png/investment/

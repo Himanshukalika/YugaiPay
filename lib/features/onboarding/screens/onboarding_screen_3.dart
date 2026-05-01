@@ -4,6 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_math/vector_math_64.dart' as v64;
 import 'dart:math' as math;
 import 'onboarding_screen_4.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:go_router/go_router.dart';
+import '../../../core/router/app_router.dart';
 
 class OnboardingScreen3 extends StatelessWidget {
   const OnboardingScreen3({super.key});
@@ -178,8 +181,12 @@ class OnboardingScreen3 extends StatelessWidget {
                       SizedBox(
                         width: 45,
                         child: GestureDetector(
-                          onTap: () {
-                            // Skip behavior: Go to login/home
+                          onTap: () async {
+                            final prefs = await SharedPreferences.getInstance();
+                            await prefs.setBool('isFirstTime', false);
+                            if (context.mounted) {
+                              context.go(AppRoutes.home);
+                            }
                           },
                           child: Text(
                             'Skip',

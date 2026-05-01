@@ -13,10 +13,11 @@ import '../../features/auth/screens/loading_screen.dart';
 import '../../features/auth/screens/permission_screen.dart';
 import '../../features/auth/screens/permission_screen_2.dart';
 import '../../features/auth/screens/login_screen.dart';
-import '../../features/investment/screens/investment_screen.dart';
+import '../../features/home/screens/investment_services_screen.dart';
 import '../../features/home/screens/banking_services_screen.dart';
 import '../../features/home/screens/payment_transfers_screen.dart';
 import '../../features/home/screens/loan_services_screen.dart';
+import '../../features/home/screens/insurance_services_screen.dart';
 import '../shell/main_shell.dart';
 
 class AppRoutes {
@@ -36,6 +37,7 @@ class AppRoutes {
   static const String bankingServices = '/banking-services';
   static const String paymentTransfers = '/payment-transfers';
   static const String loanServices = '/loan-services';
+  static const String insuranceServices = '/insurance-services';
 }
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -84,7 +86,7 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.investment,
-      builder: (context, state) => const InvestmentScreen(),
+      builder: (context, state) => const InvestmentServicesScreen(),
     ),
     GoRoute(
       path: AppRoutes.bankingServices,
@@ -97,6 +99,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.loanServices,
       builder: (context, state) => const LoanServicesScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.insuranceServices,
+      builder: (context, state) => const InsuranceServicesScreen(),
     ),
     // Main Shell (bottom nav)
     ShellRoute(

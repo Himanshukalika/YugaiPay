@@ -3,6 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_math/vector_math_64.dart' as v64;
 import 'dart:math' as math;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:go_router/go_router.dart';
+import '../../../core/router/app_router.dart';
 import 'onboarding_screen_2.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -2537,8 +2540,12 @@ class OnboardingScreen extends StatelessWidget {
                 SizedBox(
                   width: 45,
                   child: GestureDetector(
-                    onTap: () {
-                      // Animate: Push Right, ease-out, 300ms
+                    onTap: () async {
+                      final prefs = await SharedPreferences.getInstance();
+                      await prefs.setBool('isFirstTime', false);
+                      if (context.mounted) {
+                        context.go(AppRoutes.home);
+                      }
                     },
                     child: Text(
                       'Skip',

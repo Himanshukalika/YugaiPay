@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vector_math/vector_math_64.dart' as v64;
 import 'dart:math' as math;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/router/app_router.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,12 +17,23 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Navigate to onboarding after 3 seconds
-    Future.delayed(const Duration(seconds: 3), () {
-      if (mounted) {
+    _handleNavigation();
+  }
+
+  Future<void> _handleNavigation() async {
+    final prefs = await SharedPreferences.getInstance();
+    final bool isFirstTime = prefs.getBool('isFirstTime') ?? true;
+
+    // Navigate after 3 seconds
+    await Future.delayed(const Duration(seconds: 3));
+    
+    if (mounted) {
+      if (isFirstTime) {
         context.go(AppRoutes.onboarding);
+      } else {
+        context.go(AppRoutes.home);
       }
-    });
+    }
   }
 
   @override
