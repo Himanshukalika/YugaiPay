@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:go_router/go_router.dart';
+import '../../../core/router/app_router.dart';
 
 class PaymentTransfersScreen extends StatelessWidget {
   const PaymentTransfersScreen({super.key});
@@ -168,6 +170,14 @@ class PaymentTransfersScreen extends StatelessWidget {
             fontWeight: FontWeight.w500,
             height: 1.5,
           ),
+          currentIndex: 0,
+          onTap: (index) {
+            if (index == 3) {
+              context.push(AppRoutes.report);
+            } else if (index == 0) {
+              context.go(AppRoutes.home);
+            }
+          },
           elevation: 0,
           items: const [
             BottomNavigationBarItem(

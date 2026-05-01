@@ -14,6 +14,7 @@ import '../../features/auth/screens/permission_screen_2.dart';
 import '../../features/auth/screens/signin_screen.dart';
 import '../../features/auth/screens/login_screen.dart';
 import '../../features/investment/screens/investment_screen.dart';
+import '../../features/investment/screens/report_screen.dart';
 import '../../features/home/screens/Banking_Services_Screen.dart';
 import '../../features/home/screens/Payment_Transfers_Screen.dart';
 import '../../features/home/screens/Loan_Services_Screen.dart';
@@ -33,6 +34,7 @@ class AppRoutes {
   static const String history = '/history';
   static const String profile = '/profile';
   static const String investment = '/investment';
+  static const String report = '/report';
   static const String bankingServices = '/banking-services';
   static const String paymentTransfers = '/payment-transfers';
   static const String loanServices = '/loan-services';
@@ -85,6 +87,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.investment,
       builder: (context, state) => const InvestmentScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.report,
+      builder: (context, state) => const ReportScreen(),
     ),
     GoRoute(
       path: AppRoutes.bankingServices,

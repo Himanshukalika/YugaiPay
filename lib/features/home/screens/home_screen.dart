@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: _buildBottomNavBar(vw, vh),
+      bottomNavigationBar: _buildBottomNavBar(context, vw, vh),
       body: SingleChildScrollView(
         child: SizedBox(
           height: 230 * vh, // Adjusted for fixed navbar
@@ -1344,7 +1344,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   // --- BOTTOM NAV BAR ---
-  Widget _buildBottomNavBar(double vw, double vh) {
+  Widget _buildBottomNavBar(BuildContext context, double vw, double vh) {
     return Container(
       width: 100 * vw,
       height: 7.98 * vh, // ~68px
@@ -1421,7 +1421,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 itemWidth: 11.96 * vw, // ~47px
                 onTap: () {
-                  // Navigate to Report Screen
+                  context.push(AppRoutes.report);
                 },
               ),
             ],
