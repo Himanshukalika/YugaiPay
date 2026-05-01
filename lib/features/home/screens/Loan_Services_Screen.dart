@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PaymentTransfersScreen extends StatelessWidget {
-  const PaymentTransfersScreen({super.key});
+class LoanServicesScreen extends StatelessWidget {
+  const LoanServicesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,9 @@ class PaymentTransfersScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Color(0xFF1E233A)),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         actions: [
           IconButton(
@@ -49,90 +51,134 @@ class PaymentTransfersScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 10),
-                  Text(
-                    'Payments & Transfers',
-                    style: GoogleFonts.poppins(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: const Color(0xFF1A1D3A),
-                      height: 22 / 16,
-                      letterSpacing: 0,
-                    ),
+                  
+
+                  // Retail Loans Section
+                  _buildSectionTitle('Retail Loans'),
+                  const SizedBox(height: 16),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildServiceIcon(
+                        title: 'Personal\nLoan',
+                        imagePath: 'assets/icon/png/Personal_Loan.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'Gold Loan',
+                        imagePath: 'assets/icon/png/home.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'Home Loan',
+                        imagePath: 'assets/icon/png/home.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'Loan Against\nProperty',
+                        imagePath: 'assets/icon/png/Loan_Against_Property.png',
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 24),
-
-                  // DMT Section
-                  _buildSectionTitle('DMT'),
-                  const SizedBox(height: 16),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       _buildServiceIcon(
-                        title: 'Fund\nTransfer',
-                        imagePath: 'assets/icon/png/Fund_Trasnfer.png',
-                      ),
-                      const SizedBox(width: 76),
-                      _buildServiceIcon(
-                        title: 'Add\nBeneficiary',
-                        imagePath: 'assets/icon/png/Add_Beneficiary.png',
-                      ),
-                      const SizedBox(width: 76),
-                    ],
-                  ),
-                  const SizedBox(height: 32),
-
-                  // Recharges Section
-                  _buildSectionTitle('Recharges'),
-                  const SizedBox(height: 16),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _buildServiceIcon(
-                        title: 'Mobile\nRecharge',
-                        imagePath: 'assets/icon/png/Mobile_Recharge.png',
+                        title: 'Micro Loan',
+                        imagePath: 'assets/icon/png/MSME_Loan.png',
                       ),
                       _buildServiceIcon(
-                        title: 'DTH',
-                        imagePath: 'assets/icon/png/DTH.png',
+                        title: 'Salary Loan',
+                        imagePath: 'assets/icon/png/Salary_Loan.png',
                       ),
                       _buildServiceIcon(
-                        title: 'FASTag\nRecharge',
-                        imagePath: 'assets/icon/png/FASTag_Recharge.png',
+                        title: 'Education\nLoan',
+                        imagePath: 'assets/icon/png/Education_Loan.png',
                       ),
                       _buildServiceIcon(
-                        title: 'NCMC\nRecharge',
-                        imagePath: '', // No NCMC icon in assets, using placeholder
-                        isPlaceholder: true,
-                        placeholderText: 'NCMC',
+                        title: 'Consumer\nDurabale\nLoan',
+                        imagePath: 'assets/icon/png/Consumer_Durabale_Loan.png',
                       ),
                     ],
                   ),
                   const SizedBox(height: 32),
 
-                  // Utilities Section
-                  _buildSectionTitle('Utilities'),
+                  // Vehicle Loans Section
+                  _buildSectionTitle('Vehicle Loans'),
                   const SizedBox(height: 16),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       _buildServiceIcon(
-                        title: 'Electricity',
-                        imagePath: 'assets/icon/png/Electricity.png',
+                        title: 'Car Loan',
+                        imagePath: 'assets/icon/png/car.png',
                       ),
                       _buildServiceIcon(
-                        title: 'Loan\nRepayment',
-                        imagePath: 'assets/icon/png/Loan_Repayment.png',
+                        title: 'Bike Loan',
+                        imagePath: 'assets/icon/png/bike.png',
                       ),
                       _buildServiceIcon(
-                        title: 'Broadband/\nLandline',
-                        imagePath: 'assets/icon/png/Broadband_Landline.png',
+                        title: 'Commercial\nVehicle Loan',
+                        imagePath: 'assets/icon/png/bike.png',
                       ),
                       _buildServiceIcon(
-                        title: 'Book\nCylinder',
-                        imagePath: 'assets/icon/png/Book_Gas.png',
+                        title: 'Machinery\nLoan',
+                        imagePath: 'assets/icon/png/bike.png',
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 32),
+
+                  // Business & MSME Loans Section
+                  _buildSectionTitle('Business & MSME Loans'),
+                  const SizedBox(height: 16),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildServiceIcon(
+                        title: 'Business\nLoan',
+                        imagePath: 'assets/icon/png/Personal_Loan.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'MSME Loan',
+                        imagePath: 'assets/icon/png/MSME_Loan.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'Working Capital\nLoan',
+                        imagePath: 'assets/icon/png/MSME_Loan.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'Credit Line\nFacility',
+                        imagePath: 'assets/icon/png/Credit_Facility.png',
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 32),
+
+                  // Agriculture & Green Financing Section
+                  _buildSectionTitle('Agriculture & Green Financing'),
+                  const SizedBox(height: 16),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildServiceIcon(
+                        title: 'Agriculture\nInfra Loan',
+                        imagePath: 'assets/icon/png/Agriculture_Loan.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'Kisan Credit\nCard (KCC)',
+                        imagePath: 'assets/icon/png/Agriculture_Loan.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'Rural Enterprise\nLoan',
+                        imagePath: 'assets/icon/png/Rural_Enterprise.png',
+                      ),
+                      _buildServiceIcon(
+                        title: 'Solar Loan',
+                        imagePath: 'assets/icon/png/Solar_Loan.png',
                       ),
                     ],
                   ),
@@ -239,15 +285,15 @@ class PaymentTransfersScreen extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              // Light purple border for this screen to match the icons
-              border: Border.all(color: const Color(0xFFE5D5FF), width: 1.2),
+              // Light orange border for loan services
+              border: Border.all(color: const Color(0xFFFFEDD5), width: 1.2),
             ),
             child: isPlaceholder 
                 ? Center(
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
                       decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xFF8A2BE2), width: 1),
+                        border: Border.all(color: const Color(0xFFF0941F), width: 1),
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
@@ -255,7 +301,7 @@ class PaymentTransfersScreen extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           fontSize: 8, 
                           fontWeight: FontWeight.w600, 
-                          color: const Color(0xFF8A2BE2)
+                          color: const Color(0xFFF0941F)
                         ),
                       ),
                     ),

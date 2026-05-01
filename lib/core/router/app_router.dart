@@ -11,7 +11,12 @@ import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../features/auth/screens/loading_screen.dart';
 import '../../features/auth/screens/permission_screen.dart';
 import '../../features/auth/screens/permission_screen_2.dart';
+import '../../features/auth/screens/signin_screen.dart';
 import '../../features/auth/screens/login_screen.dart';
+import '../../features/investment/screens/investment_screen.dart';
+import '../../features/home/screens/banking_services_screen.dart';
+import '../../features/home/screens/payment_transfers_screen.dart';
+import '../../features/home/screens/Loan_Services_Screen.dart';
 import '../shell/main_shell.dart';
 
 class AppRoutes {
@@ -27,6 +32,10 @@ class AppRoutes {
   static const String receive = '/receive';
   static const String history = '/history';
   static const String profile = '/profile';
+  static const String investment = '/investment';
+  static const String bankingServices = '/banking-services';
+  static const String paymentTransfers = '/payment-transfers';
+  static const String loanServices = '/loan-services';
 }
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -72,6 +81,22 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.home,
       builder: (context, state) => const HomeScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.investment,
+      builder: (context, state) => const InvestmentScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.bankingServices,
+      builder: (context, state) => const BankingServicesScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.paymentTransfers,
+      builder: (context, state) => const PaymentTransfersScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.loanServices,
+      builder: (context, state) => const LoanServicesScreen(),
     ),
     // Main Shell (bottom nav)
     ShellRoute(
