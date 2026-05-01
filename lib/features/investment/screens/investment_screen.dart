@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
+import '../../../core/router/app_router.dart';
 
 class InvestmentScreen extends StatelessWidget {
   const InvestmentScreen({super.key});
@@ -215,10 +216,11 @@ class InvestmentScreen extends StatelessWidget {
                                               color: const Color(0xFF4A5568),
                                               height: 2.2, // 22/10 = 2.2
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
+                                  ),
                                     Positioned(
                                       top: 4.93 * vh, // ~42px
                                       left: 28.50 * vw, // ~112px
@@ -247,9 +249,8 @@ class InvestmentScreen extends StatelessWidget {
                         height: 1.0,
                       ),
                     ),
-                  ),
-                  SizedBox(height: 3.99 * vh), // ~34px gap
-                  Container(
+                    SizedBox(height: 3.99 * vh), // ~34px gap
+                    Container(
                     width: 87.79 * vw, // ~345px
                     height: 10.68 * vh, // ~91px
                     child: Row(
