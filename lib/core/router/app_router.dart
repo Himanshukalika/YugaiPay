@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../features/splash/screens/splash_screen.dart';
 import '../../features/auth/screens/auth_screen.dart';
 import '../../features/home/screens/home_screen.dart';
 import '../../features/send/screens/send_screen.dart';
 import '../../features/receive/screens/receive_screen.dart';
-import '../../features/history/screens/history_screen.dart';
+import '../../features/home/screens/history_screen.dart';
 import '../../features/profile/screens/profile_screen.dart';
 import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../features/auth/screens/loading_screen.dart';
 import '../../features/auth/screens/permission_screen.dart';
 import '../../features/auth/screens/permission_screen_2.dart';
-import '../../features/auth/screens/signin_screen.dart';
 import '../../features/auth/screens/login_screen.dart';
 import '../../features/investment/screens/investment_screen.dart';
 import '../../features/investment/screens/report_screen.dart';
-import '../../features/home/screens/Banking_Services_Screen.dart';
-import '../../features/home/screens/Payment_Transfers_Screen.dart';
-import '../../features/home/screens/Loan_Services_Screen.dart';
+import '../../features/home/screens/investment_services_screen.dart';
+import '../../features/home/screens/banking_services_screen.dart';
+import '../../features/home/screens/payment_transfers_screen.dart';
+import '../../features/home/screens/loan_services_screen.dart';
+import '../../features/home/screens/insurance_services_screen.dart';
+import '../../features/home/screens/tax_compliance_services_screen.dart';
+import '../../features/home/screens/travel_booking_services_screen.dart';
+import '../../features/home/screens/alert_screen.dart';
+import '../../features/home/screens/search_screen.dart';
 import '../shell/main_shell.dart';
 
 class AppRoutes {
@@ -38,6 +44,11 @@ class AppRoutes {
   static const String bankingServices = '/banking-services';
   static const String paymentTransfers = '/payment-transfers';
   static const String loanServices = '/loan-services';
+  static const String insuranceServices = '/insurance-services';
+  static const String taxComplianceServices = '/tax-compliance-services';
+  static const String travelBookingServices = '/travel-booking-services';
+  static const String alerts = '/alerts';
+  static const String search = '/search';
 }
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -80,13 +91,11 @@ final appRouter = GoRouter(
       path: AppRoutes.login,
       builder: (context, state) => const LoginScreen(),
     ),
-    GoRoute(
-      path: AppRoutes.home,
-      builder: (context, state) => const HomeScreen(),
-    ),
+    
+    // Service Screens (Outside shell to hide bottom nav or have custom header)
     GoRoute(
       path: AppRoutes.investment,
-      builder: (context, state) => const InvestmentScreen(),
+      builder: (context, state) => const InvestmentServicesScreen(),
     ),
     GoRoute(
       path: AppRoutes.report,
@@ -104,11 +113,40 @@ final appRouter = GoRouter(
       path: AppRoutes.loanServices,
       builder: (context, state) => const LoanServicesScreen(),
     ),
-    // Main Shell (bottom nav)
+    GoRoute(
+      path: AppRoutes.insuranceServices,
+      builder: (context, state) => const InsuranceServicesScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.taxComplianceServices,
+      builder: (context, state) => const TaxComplianceServicesScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.travelBookingServices,
+      builder: (context, state) => const TravelBookingServicesScreen(),
+    ),
+
+    // Main Shell (bottom nav shared between core screens)
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) => MainShell(child: child),
       routes: [
+        GoRoute(
+          path: AppRoutes.home,
+          builder: (context, state) => const HomeScreen(),
+        ),
+        GoRoute(
+          path: AppRoutes.search,
+          builder: (context, state) => const SearchScreen(),
+        ),
+        GoRoute(
+          path: AppRoutes.alerts,
+          builder: (context, state) => const AlertScreen(),
+        ),
+        GoRoute(
+          path: AppRoutes.history,
+          builder: (context, state) => const HistoryScreen(),
+        ),
         GoRoute(
           path: AppRoutes.send,
           builder: (context, state) => const SendScreen(),
@@ -116,10 +154,6 @@ final appRouter = GoRouter(
         GoRoute(
           path: AppRoutes.receive,
           builder: (context, state) => const ReceiveScreen(),
-        ),
-        GoRoute(
-          path: AppRoutes.history,
-          builder: (context, state) => const HistoryScreen(),
         ),
         GoRoute(
           path: AppRoutes.profile,

@@ -1,7 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:vector_math/vector_math_64.dart' as v64;
 import 'dart:math' as math;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/router/app_router.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,12 +17,23 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Navigate to onboarding after 3 seconds
-    Future.delayed(const Duration(seconds: 3), () {
-      if (mounted) {
+    _handleNavigation();
+  }
+
+  Future<void> _handleNavigation() async {
+    final prefs = await SharedPreferences.getInstance();
+    final bool isFirstTime = prefs.getBool('isFirstTime') ?? true;
+
+    // Navigate after 3 seconds
+    await Future.delayed(const Duration(seconds: 3));
+    
+    if (mounted) {
+      if (isFirstTime) {
         context.go(AppRoutes.onboarding);
+      } else {
+        context.go(AppRoutes.home);
       }
-    });
+    }
   }
 
   @override
@@ -37,8 +50,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  const Color(0xFF4C1D95).withOpacity(0.12),
-                  const Color(0xFF8B5CF6).withOpacity(0.12),
+                  const Color(0xFF4C1D95).withValues(alpha: 0.12),
+                  const Color(0xFF8B5CF6).withValues(alpha: 0.12),
                 ],
               ),
             ),
@@ -61,8 +74,8 @@ class _SplashScreenState extends State<SplashScreen> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        const Color(0xFF4C1D95).withOpacity(0.6),
-                        const Color(0xFF8B5CF6).withOpacity(0.6),
+                        const Color(0xFF4C1D95).withValues(alpha: 0.6),
+                        const Color(0xFF8B5CF6).withValues(alpha: 0.6),
                       ],
                     ),
                   ),
@@ -119,9 +132,9 @@ class LogoPainter extends CustomPainter {
     
     // Apply Rotation -30
     Matrix4 m1 = Matrix4.identity()
-      ..translate(120.95 + 39.14/2, 281.72 + 102.0/2)
+      ..translateByVector3(v64.Vector3(120.95 + 39.14/2, 281.72 + 102.0/2, 0.0))
       ..rotateZ(-30 * math.pi / 180)
-      ..translate(-39.14/2, -102.0/2);
+      ..translateByVector3(v64.Vector3(-39.14/2, -102.0/2, 0.0));
     path1 = path1.transform(m1.storage);
 
     // Part 2 Path
@@ -136,9 +149,9 @@ class LogoPainter extends CustomPainter {
 
     // Apply Rotation +22.76
     Matrix4 m2 = Matrix4.identity()
-      ..translate(176.51 + 39.14/2, 282.64 + 150.75/2)
+      ..translateByVector3(v64.Vector3(176.51 + 39.14/2, 282.64 + 150.75/2, 0.0))
       ..rotateZ(22.76 * math.pi / 180)
-      ..translate(-39.14/2, -150.75/2);
+      ..translateByVector3(v64.Vector3(-39.14/2, -150.75/2, 0.0));
     path2 = path2.transform(m2.storage);
 
     // Part 3 (The Cutter)
@@ -153,9 +166,9 @@ class LogoPainter extends CustomPainter {
 
     // Apply Rotation +49.34
     Matrix4 m3 = Matrix4.identity()
-      ..translate(180.37 + 8.0/2, 342.64 + 89.29/2)
+      ..translateByVector3(v64.Vector3(180.37 + 8.0/2, 342.64 + 89.29/2, 0.0))
       ..rotateZ(49.34 * math.pi / 180)
-      ..translate(-8.0/2, -89.29/2);
+      ..translateByVector3(v64.Vector3(-8.0/2, -89.29/2, 0.0));
     path3 = path3.transform(m3.storage);
 
     // COMBINE AND CUT

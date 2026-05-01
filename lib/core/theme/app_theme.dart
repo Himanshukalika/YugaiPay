@@ -88,7 +88,7 @@ class AppTheme {
         // Bottom Navigation
         navigationBarTheme: NavigationBarThemeData(
           backgroundColor: AppColors.surface,
-          indicatorColor: AppColors.primary.withOpacity(0.2),
+          indicatorColor: AppColors.primary.withValues(alpha: 0.2),
           labelTextStyle: WidgetStateProperty.all(
             GoogleFonts.outfit(
               fontSize: AppSizes.fontXs,

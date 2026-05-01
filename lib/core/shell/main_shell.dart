@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../constants/app_sizes.dart';
+import '../router/app_router.dart';
 
 class MainShell extends StatelessWidget {
   final Widget child;
@@ -11,57 +11,54 @@ class MainShell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: child,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _calculateSelectedIndex(context),
-        onDestinationSelected: (idx) => _onItemTapped(idx, context),
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home_rounded),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.search_outlined),
-            selectedIcon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.notifications_none),
-            selectedIcon: Icon(Icons.notifications),
-            label: 'Alerts',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.access_time),
-            selectedIcon: Icon(Icons.access_time_filled),
-            label: 'Report',
-          ),
-        ],
+      bottomNavigationBar: Container(
+        height: 70,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 10,
+              offset: const Offset(0, -5),
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _buildNavItem(context, Icons.home_outlined, Icons.home_rounded, 'Home', AppRoutes.home),
+            _buildNavItem(context, Icons.search, Icons.search, 'Search', AppRoutes.search),
+            _buildNavItem(context, Icons.notifications_none, Icons.notifications, 'Alerts', AppRoutes.alerts),
+            _buildNavItem(context, Icons.access_time, Icons.access_time_filled, 'Report', AppRoutes.history),
+          ],
+        ),
       ),
     );
   }
 
-  int _calculateSelectedIndex(BuildContext context) {
-    final location = GoRouterState.of(context).uri.toString();
-    if (location.startsWith('/home')) return 0;
-    if (location.startsWith('/search')) return 1;
-    if (location.startsWith('/alerts')) return 2;
-    if (location.startsWith('/report')) return 3;
-    return 0;
-  }
-
-  void _onItemTapped(int index, BuildContext context) {
-    switch (index) {
-      case 0:
-        context.go('/home');
-      case 1:
-        // context.go('/search');
-        break;
-      case 2:
-        // context.go('/alerts');
-        break;
-      case 3:
-        context.push('/report');
-        break;
-    }
+  Widget _buildNavItem(BuildContext context, IconData icon, IconData activeIcon, String label, String route) {
+    final bool isActive = GoRouterState.of(context).uri.toString().startsWith(route);
+    return GestureDetector(
+      onTap: () => context.go(route),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            isActive ? activeIcon : icon,
+            color: isActive ? const Color(0xFF6366F1) : const Color(0xFF1A1D3A),
+            size: 26,
+          ),
+          const SizedBox(height: 4),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 10,
+              fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
+              color: isActive ? const Color(0xFF6366F1) : const Color(0xFF1A1D3A),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

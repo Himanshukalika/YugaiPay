@@ -52,7 +52,7 @@ class _PermissionScreenState extends State<PermissionScreen> {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.08),
+                              color: Colors.black.withValues(alpha: 0.08),
                               blurRadius: 4,
                               offset: const Offset(0, 4),
                             ),
@@ -93,7 +93,7 @@ class _PermissionScreenState extends State<PermissionScreen> {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.18), // #0000002E
+                              color: Colors.black.withValues(alpha: 0.18), // #0000002E
                               blurRadius: 4,
                               offset: const Offset(0, 4),
                             ),
@@ -121,7 +121,7 @@ class _PermissionScreenState extends State<PermissionScreen> {
                       borderRadius: BorderRadius.circular(24),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.08),
+                          color: Colors.black.withValues(alpha: 0.08),
                           blurRadius: 4,
                           offset: const Offset(0, 4),
                         ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:ui';
 import '../../../core/router/app_router.dart';
@@ -19,7 +18,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: _buildBottomNavBar(context, vw, vh),
+
       body: SingleChildScrollView(
         child: SizedBox(
           height: 230 * vh, // Adjusted for fixed navbar
@@ -185,7 +184,7 @@ class HomeScreen extends StatelessWidget {
             top: 40.1 * vh, // ~342px
             left: 0,
             right: 0,
-            child: Container(
+            child: SizedBox(
               width: screenWidth,
               height: 190 * vh, // Adjusted for fixed navbar
               child: Column(
@@ -237,7 +236,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
 
-                  Container(
+                  SizedBox(
                     width: screenWidth,
                     height: 25 * vh, // Reduced from 148 * vh to fix excessive empty space
                     child: Stack(
@@ -254,18 +253,21 @@ class HomeScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 // 5.2.1.1 Heading Text
-                                Text(
-                                  'Banking Services',
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 3.05 * vw, // ~12px
-                                    fontWeight: FontWeight.w600,
-                                    color: const Color(0xFF1A1D3A),
-                                    height: 1.0,
+                                GestureDetector(
+                                  onTap: () => context.push(AppRoutes.bankingServices),
+                                  child: Text(
+                                    'Banking Services',
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 3.05 * vw, // ~12px
+                                      fontWeight: FontWeight.w600,
+                                      color: const Color(0xFF1A1D3A),
+                                      height: 1.0,
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(height: 4), // Gap property
                                 // 5.2.1.2 Banner/Service Group Container
-                                Container(
+                                SizedBox(
                                   height: 14.08 * vh, // ~120px
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -400,16 +402,19 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Payment & Transfers',
-                          style: GoogleFonts.poppins(
-                            fontSize: 3.05 * vw, // ~12px
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF1A1D3A),
+                        GestureDetector(
+                          onTap: () => context.push(AppRoutes.paymentTransfers),
+                          child: Text(
+                            'Payment & Transfers',
+                            style: GoogleFonts.poppins(
+                              fontSize: 3.05 * vw, // ~12px
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0xFF1A1D3A),
+                            ),
                           ),
                         ),
                         // 5.3.1 Service Items Row
-                        Container(
+                        SizedBox(
                           width: 87.78 * vw, // ~345px
                           height: 12 * vh, // Increased from 8.5 * vh to accommodate multi-line labels
                           child: Row(
@@ -424,7 +429,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         // 5.3.2 Bottom Action Row
                         SizedBox(height: 1.41 * vh), // ~12px gap
-                        Container(
+                        SizedBox(
                           width: 87.78 * vw, // ~345px
                           height: 3.76 * vh, // ~32px
                           child: Row(
@@ -504,16 +509,19 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Loan Services',
-                          style: GoogleFonts.poppins(
-                            fontSize: 3.05 * vw, // ~12px
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF1A1D3A),
+                        GestureDetector(
+                          onTap: () => context.push(AppRoutes.loanServices),
+                          child: Text(
+                            'Loan Services',
+                            style: GoogleFonts.poppins(
+                              fontSize: 3.05 * vw, // ~12px
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0xFF1A1D3A),
+                            ),
                           ),
                         ),
                         // 5.4.1 Service Items Row
-                        Container(
+                        SizedBox(
                           width: 87.78 * vw, // ~345px
                           height: 12 * vh,
                           child: Row(
@@ -528,7 +536,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         // 5.4.2 Bottom Action Row
                         SizedBox(height: 1.41 * vh), // ~12px gap
-                        Container(
+                        SizedBox(
                           width: 87.78 * vw, // ~345px
                           height: 3.76 * vh, // ~32px
                           child: Row(
@@ -612,16 +620,19 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Insurance Services', // Placeholder title
-                          style: GoogleFonts.poppins(
-                            fontSize: 3.05 * vw, // ~12px
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF1A1D3A),
+                        GestureDetector(
+                          onTap: () => context.push(AppRoutes.insuranceServices),
+                          child: Text(
+                            'Insurance Services',
+                            style: GoogleFonts.poppins(
+                              fontSize: 3.05 * vw, // ~12px
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0xFF1A1D3A),
+                            ),
                           ),
                         ),
                         // 5.5.1 Service Items Row
-                        Container(
+                        SizedBox(
                           width: 87.78 * vw, // ~345px
                           height: 12 * vh,
                           child: Row(
@@ -636,7 +647,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         // 5.5.2 Bottom Action Row
                         SizedBox(height: 1.41 * vh), // ~12px gap
-                        Container(
+                        SizedBox(
                           width: 87.78 * vw, // ~345px
                           height: 3.76 * vh, // ~32px
                           child: Row(
@@ -660,7 +671,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  // Navigate to: "Insurance Services Screen"
+                                  context.push(AppRoutes.insuranceServices);
                                 },
                                 child: Container(
                                   width: 18.32 * vw, // ~72px
@@ -720,16 +731,19 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Travel Booking',
-                          style: GoogleFonts.poppins(
-                            fontSize: 3.05 * vw, // ~12px
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF1A1D3A),
+                        GestureDetector(
+                          onTap: () => context.push(AppRoutes.travelBookingServices),
+                          child: Text(
+                            'Travel Booking',
+                            style: GoogleFonts.poppins(
+                              fontSize: 3.05 * vw, // ~12px
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0xFF1A1D3A),
+                            ),
                           ),
                         ),
                         // 5.6.1 Service Items Row
-                        Container(
+                        SizedBox(
                           width: 87.78 * vw, // ~345px
                           height: 12 * vh,
                           child: Row(
@@ -744,7 +758,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         // 5.6.2 Bottom Action Row
                         SizedBox(height: 1.41 * vh), // ~12px gap
-                        Container(
+                        SizedBox(
                           width: 87.78 * vw, // ~345px
                           height: 3.76 * vh, // ~32px
                           child: Row(
@@ -768,7 +782,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  // Navigate to: "Travel Booking Screen"
+                                  context.push(AppRoutes.travelBookingServices);
                                 },
                                 child: Container(
                                   width: 18.32 * vw, // ~72px
@@ -828,16 +842,19 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Investment Services',
-                          style: GoogleFonts.poppins(
-                            fontSize: 3.05 * vw, // ~12px
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF1A1D3A),
+                        GestureDetector(
+                          onTap: () => context.push(AppRoutes.investment),
+                          child: Text(
+                            'Investment Services',
+                            style: GoogleFonts.poppins(
+                              fontSize: 3.05 * vw, // ~12px
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0xFF1A1D3A),
+                            ),
                           ),
                         ),
                         // 5.7.1 Service Items Row
-                        Container(
+                        SizedBox(
                           width: 87.78 * vw, // ~345px
                           height: 12 * vh,
                           child: Row(
@@ -852,7 +869,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         // 5.7.2 Bottom Action Row
                         SizedBox(height: 1.41 * vh), // ~12px gap
-                        Container(
+                        SizedBox(
                           width: 87.78 * vw, // ~345px
                           height: 3.76 * vh, // ~32px
                           child: Row(
@@ -936,16 +953,19 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Tax & Compliance Services',
-                          style: GoogleFonts.poppins(
-                            fontSize: 3.05 * vw, // ~12px
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF1A1D3A),
+                        GestureDetector(
+                          onTap: () => context.push(AppRoutes.taxComplianceServices),
+                          child: Text(
+                            'Tax & Compliance Services',
+                            style: GoogleFonts.poppins(
+                              fontSize: 3.05 * vw, // ~12px
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0xFF1A1D3A),
+                            ),
                           ),
                         ),
                         // 5.8.1 Service Items Row
-                        Container(
+                        SizedBox(
                           width: 87.78 * vw, // ~345px
                           height: 12 * vh,
                           child: Row(
@@ -960,7 +980,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         // 5.8.2 Bottom Action Row
                         SizedBox(height: 1.41 * vh), // ~12px gap
-                        Container(
+                        SizedBox(
                           width: 87.78 * vw, // ~345px
                           height: 3.76 * vh, // ~32px
                           child: Row(
@@ -984,7 +1004,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  // Navigate to: "Tax & Compliance Screen"
+                                  context.push(AppRoutes.taxComplianceServices);
                                 },
                                 child: Container(
                                   width: 18.32 * vw, // ~72px
@@ -1138,11 +1158,11 @@ class HomeScreen extends StatelessWidget {
             width: 52,
             height: 52,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.9),
+              color: Colors.white.withValues(alpha: 0.9),
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.04),
+                  color: Colors.black.withValues(alpha: 0.04),
                   blurRadius: 4,
                   offset: const Offset(0, 4),
                 ),
@@ -1193,7 +1213,7 @@ class HomeScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(2.03 * vw),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha: 0.04),
             blurRadius: 4,
             offset: const Offset(0, 4),
           )
@@ -1272,7 +1292,7 @@ class HomeScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(2.03 * vw),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha: 0.04),
             blurRadius: 4,
             offset: const Offset(0, 4),
           )
@@ -1342,6 +1362,7 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+<<<<<<< HEAD
 
   // --- BOTTOM NAV BAR ---
   Widget _buildBottomNavBar(BuildContext context, double vw, double vh) {
@@ -1482,6 +1503,8 @@ class HomeScreen extends StatelessWidget {
     ),
   );
 }
+=======
+>>>>>>> 39caa964e5d80f9f9d6f29a002143360d0fbf9e8
 }
 
 class GradientBorderPainter extends CustomPainter {
@@ -1511,3 +1534,4 @@ class GradientBorderPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }
+

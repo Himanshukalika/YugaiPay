@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'dart:math' as math;
-
-import '../../auth/screens/signup_screen.dart';
 import 'dart:async';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:go_router/go_router.dart';
+import '../../../core/router/app_router.dart';
 
 class OnboardingScreen4 extends StatefulWidget {
   const OnboardingScreen4({super.key});
@@ -17,30 +16,17 @@ class _OnboardingScreen4State extends State<OnboardingScreen4> {
   @override
   void initState() {
     super.initState();
-    // Figma spec: After delay -> Navigate with Smart Animate (Spring: mass: 1, stiffness: 115.2, damping: 24)
-    // Increased delay from 1ms to 1.5 seconds so "Let's begin." is visible
+    _completeOnboarding();
+  }
+
+  Future<void> _completeOnboarding() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isFirstTime', false);
+
+    // Figma spec: After delay -> Navigate with Smart Animate
     Timer(const Duration(milliseconds: 1500), () {
       if (mounted) {
-        Navigator.pushReplacement(
-          context,
-          PageRouteBuilder(
-            transitionDuration: const Duration(milliseconds: 800),
-            reverseTransitionDuration: const Duration(milliseconds: 800),
-            pageBuilder: (context, animation, secondaryAnimation) => const SignUpScreen(),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              // Creating a custom curve to mimic the provided Spring behavior
-              // approximating { mass: 1, stiffness: 115.2, damping: 24 }
-              final curvedAnimation = CurvedAnimation(
-                parent: animation,
-                curve: Curves.easeOutCubic, 
-              );
-              return FadeTransition(
-                opacity: curvedAnimation,
-                child: child,
-              );
-            },
-          ),
-        );
+        context.go(AppRoutes.home); // Navigate to Home as requested
       }
     });
   }

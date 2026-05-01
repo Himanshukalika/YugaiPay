@@ -7,7 +7,6 @@ import 'dart:ui';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/router/app_router.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class PermissionScreen2 extends StatefulWidget {
   const PermissionScreen2({super.key});
@@ -75,7 +74,7 @@ class _PermissionScreen2State extends State<PermissionScreen2> {
                       borderRadius: BorderRadius.circular(24),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.08),
+                          color: Colors.black.withValues(alpha: 0.08),
                           blurRadius: 4,
                           offset: const Offset(0, 4),
                         ),

@@ -13,6 +13,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
 
@@ -107,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(24),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.08),
+                          color: Colors.black.withValues(alpha: 0.08),
                           blurRadius: 4,
                           offset: const Offset(0, 4),
                         ),
@@ -168,7 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                                 const SizedBox(height: 32),
                                 // Input Area
-                                Container(
+                                SizedBox(
                                   width: 296,
 
                                   child: Column(
@@ -186,8 +187,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                             begin: Alignment.centerLeft,
                                             end: Alignment.centerRight,
                                             colors: [
-                                              const Color(0xFF4C1D95).withOpacity(0.3),
-                                              const Color(0xFF8B5CF6).withOpacity(0.3),
+                                              const Color(0xFF4C1D95).withValues(alpha: 0.3),
+                                              const Color(0xFF8B5CF6).withValues(alpha: 0.3),
                                             ],
                                           ),
                                         ),
@@ -261,8 +262,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                             begin: Alignment.centerLeft,
                                             end: Alignment.centerRight,
                                             colors: [
-                                              const Color(0xFF4C1D95).withOpacity(0.3),
-                                              const Color(0xFF8B5CF6).withOpacity(0.3),
+                                              const Color(0xFF4C1D95).withValues(alpha: 0.3),
+                                              const Color(0xFF8B5CF6).withValues(alpha: 0.3),
                                             ],
                                           ),
                                         ),
@@ -334,7 +335,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                       ),
 
                                                       // New Element Container (75x18)
-                                                      Container(
+                                                      SizedBox(
                                                         width: 75,
                                                         height: 18,
                                                         child: Row(
