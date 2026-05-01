@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:vector_math/vector_math_64.dart' as v64;
 import 'dart:math' as math;
 import '../../../core/router/app_router.dart';
 
@@ -119,9 +120,9 @@ class LogoPainter extends CustomPainter {
     
     // Apply Rotation -30
     Matrix4 m1 = Matrix4.identity()
-      ..translateByDouble(120.95 + 39.14/2, 281.72 + 102.0/2)
+      ..translateByVector3(v64.Vector3(120.95 + 39.14/2, 281.72 + 102.0/2, 0.0))
       ..rotateZ(-30 * math.pi / 180)
-      ..translateByDouble(-39.14/2, -102.0/2);
+      ..translateByVector3(v64.Vector3(-39.14/2, -102.0/2, 0.0));
     path1 = path1.transform(m1.storage);
 
     // Part 2 Path
@@ -136,9 +137,9 @@ class LogoPainter extends CustomPainter {
 
     // Apply Rotation +22.76
     Matrix4 m2 = Matrix4.identity()
-      ..translateByDouble(176.51 + 39.14/2, 282.64 + 150.75/2)
+      ..translateByVector3(v64.Vector3(176.51 + 39.14/2, 282.64 + 150.75/2, 0.0))
       ..rotateZ(22.76 * math.pi / 180)
-      ..translateByDouble(-39.14/2, -150.75/2);
+      ..translateByVector3(v64.Vector3(-39.14/2, -150.75/2, 0.0));
     path2 = path2.transform(m2.storage);
 
     // Part 3 (The Cutter)
@@ -153,9 +154,9 @@ class LogoPainter extends CustomPainter {
 
     // Apply Rotation +49.34
     Matrix4 m3 = Matrix4.identity()
-      ..translateByDouble(180.37 + 8.0/2, 342.64 + 89.29/2)
+      ..translateByVector3(v64.Vector3(180.37 + 8.0/2, 342.64 + 89.29/2, 0.0))
       ..rotateZ(49.34 * math.pi / 180)
-      ..translateByDouble(-8.0/2, -89.29/2);
+      ..translateByVector3(v64.Vector3(-8.0/2, -89.29/2, 0.0));
     path3 = path3.transform(m3.storage);
 
     // COMBINE AND CUT

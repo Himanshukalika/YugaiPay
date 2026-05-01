@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vector_math/vector_math_64.dart' as v64;
 import 'dart:math' as math;
 import 'onboarding_screen_2.dart';
 
@@ -2537,7 +2538,6 @@ class OnboardingScreen extends StatelessWidget {
                   width: 45,
                   child: GestureDetector(
                     onTap: () {
-                      // TODO: Implement Navigation to Onboarding Screen 4
                       // Animate: Push Right, ease-out, 300ms
                     },
                     child: Text(
@@ -2676,9 +2676,9 @@ class OnboardingLogoPainter extends CustomPainter {
     
     // Apply Rotation -33.13
     Matrix4 m1 = Matrix4.identity()
-      ..translateByDouble(159.01 + 20.49/2, 60.19 + 56.76/2)
+      ..translateByVector3(v64.Vector3(159.01 + 20.49/2, 60.19 + 56.76/2, 0.0))
       ..rotateZ(-33.13 * math.pi / 180)
-      ..translateByDouble(-20.49/2, -56.76/2);
+      ..translateByVector3(v64.Vector3(-20.49/2, -56.76/2, 0.0));
     path1 = path1.transform(m1.storage);
 
     // Part 2 Path
@@ -2693,9 +2693,9 @@ class OnboardingLogoPainter extends CustomPainter {
 
     // Apply Rotation +27.37
     Matrix4 m2 = Matrix4.identity()
-      ..translateByDouble(188.71 + 20.23/2, 60.19 + 82.62/2)
+      ..translateByVector3(v64.Vector3(188.71 + 20.23/2, 60.19 + 82.62/2, 0.0))
       ..rotateZ(27.37 * math.pi / 180)
-      ..translateByDouble(-20.23/2, -82.62/2);
+      ..translateByVector3(v64.Vector3(-20.23/2, -82.62/2, 0.0));
     path2 = path2.transform(m2.storage);
 
     // Part 3 (The Cutter)
@@ -2710,9 +2710,9 @@ class OnboardingLogoPainter extends CustomPainter {
 
     // Apply Rotation +52.77
     Matrix4 m3 = Matrix4.identity()
-      ..translateByDouble(189.89 + 4.36/2, 94.53 + 47.80/2)
+      ..translateByVector3(v64.Vector3(189.89 + 4.36/2, 94.53 + 47.80/2, 0.0))
       ..rotateZ(52.77 * math.pi / 180)
-      ..translateByDouble(-4.36/2, -47.80/2);
+      ..translateByVector3(v64.Vector3(-4.36/2, -47.80/2, 0.0));
     path3 = path3.transform(m3.storage);
 
     // COMBINE AND CUT

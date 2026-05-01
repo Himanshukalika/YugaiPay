@@ -35,8 +35,8 @@ class BankingServicesScreen extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: [
-                    const Color(0xFFF0F4FF).withOpacity(0.8),
-                    Colors.white.withOpacity(0.0),
+                    const Color(0xFFF0F4FF).withValues(alpha: 0.8),
+                    Colors.white.withValues(alpha: 0.0),
                   ],
                 ),
               ),
@@ -184,7 +184,7 @@ class BankingServicesScreen extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 10,
               offset: const Offset(0, -5),
             ),

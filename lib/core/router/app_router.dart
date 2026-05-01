@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../features/splash/screens/splash_screen.dart';
 import '../../features/auth/screens/auth_screen.dart';
 import '../../features/home/screens/home_screen.dart';
@@ -11,12 +12,11 @@ import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../features/auth/screens/loading_screen.dart';
 import '../../features/auth/screens/permission_screen.dart';
 import '../../features/auth/screens/permission_screen_2.dart';
-import '../../features/auth/screens/signin_screen.dart';
 import '../../features/auth/screens/login_screen.dart';
 import '../../features/investment/screens/investment_screen.dart';
 import '../../features/home/screens/banking_services_screen.dart';
 import '../../features/home/screens/payment_transfers_screen.dart';
-import '../../features/home/screens/Loan_Services_Screen.dart';
+import '../../features/home/screens/loan_services_screen.dart';
 import '../shell/main_shell.dart';
 
 class AppRoutes {
