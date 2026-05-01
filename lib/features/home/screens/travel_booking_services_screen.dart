@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/router/app_router.dart';
 
-class InvestmentServicesScreen extends StatelessWidget {
-  const InvestmentServicesScreen({super.key});
+class TravelBookingServicesScreen extends StatelessWidget {
+  const TravelBookingServicesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -59,64 +59,50 @@ class InvestmentServicesScreen extends StatelessWidget {
                   
                   SizedBox(height: 5 * vh),
 
-                  // Gold Savings Section
-                  _buildSectionHeading(vw, 'Gold Savings'),
-                  SizedBox(height: 2 * vh),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Daily Savings Card (Large)
-                      Expanded(
-                        flex: 5,
-                        child: _buildInvestmentCard(
-                          vw,
-                          'Daily Savings',
-                          'Start saving as low\nas ₹ 10 per day',
-                          'assets/icon/png/investment/Daily_Savings.png',
-                          height: 22 * vh,
-                        ),
-                      ),
-                      SizedBox(width: 3 * vw),
-                      // Right Column for Buy Gold and Monthly Savings
-                      Expanded(
-                        flex: 4,
-                        child: Column(
-                          children: [
-                            _buildInvestmentCard(
-                              vw,
-                              'Buy Gold',
-                              'One time gold savings',
-                              'assets/icon/png/investment/buy_gold.png',
-                              height: 10.5 * vh,
-                              isCompact: true,
-                            ),
-                            SizedBox(height: 1 * vh),
-                            _buildInvestmentCard(
-                              vw,
-                              'Monthly Savings',
-                              'Steady gold savings',
-                              'assets/icon/png/investment/Monthly_Savings.png',
-                              height: 10.5 * vh,
-                              isCompact: true,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                  // Main Title
+                  Text(
+                    'Travel Booking',
+                    style: GoogleFonts.poppins(
+                      fontSize: 4.07 * vw, // 16px
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xFF1A1D3A),
+                    ),
                   ),
+                  SizedBox(height: 3 * vh),
 
-                  SizedBox(height: 4 * vh),
-
-                  // Silver Savings Section
-                  _buildSectionHeading(vw, 'Silver Savings'),
-                  SizedBox(height: 2 * vh),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // Grid of Services
+                  GridView.count(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 4 * vw,
+                    crossAxisSpacing: 4 * vw,
+                    childAspectRatio: 165 / 150,
                     children: [
-                      _buildCircularItem(vw, 'Save\nDaily', 'assets/icon/png/investment/Save_Daily.png', const Color(0xFF14B8A6)),
-                      _buildCircularItem(vw, 'Save\nMonthly', 'assets/icon/png/investment/Save_Monthly.png', const Color(0xFF14B8A6)),
-                      _buildCircularItem(vw, 'Buy\nSilver', 'assets/icon/png/investment/Buy_Silver.png', const Color(0xFF14B8A6)),
-                      SizedBox(width: 18 * vw), // Spacer to match grid alignment
+                      _buildTravelCard(
+                        vw,
+                        'Bus',
+                        'Save upto ₹400',
+                        'assets/icon/png/travel/bus.png',
+                      ),
+                      _buildTravelCard(
+                        vw,
+                        'Train',
+                        'Confirm ticket or\n3X return',
+                        'assets/icon/png/travel/tran.png',
+                      ),
+                      _buildTravelCard(
+                        vw,
+                        'Flight',
+                        'Flat 12% OFF',
+                        'assets/icon/png/travel/flight.png',
+                      ),
+                      _buildTravelCard(
+                        vw,
+                        'Hotel',
+                        'Upto 30% OFF',
+                        'assets/icon/png/travel/hotel.png',
+                      ),
                     ],
                   ),
 
@@ -130,25 +116,20 @@ class InvestmentServicesScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSectionHeading(double vw, String title) {
-    return Text(
-      title,
-      style: GoogleFonts.poppins(
-        fontSize: 4.07 * vw, // 16px
-        fontWeight: FontWeight.w600,
-        color: const Color(0xFF1A1D3A),
-      ),
-    );
-  }
-
-  Widget _buildInvestmentCard(double vw, String title, String subtitle, String assetPath, {required double height, bool isCompact = false}) {
+  Widget _buildTravelCard(double vw, String title, String subtitle, String illustrationPath) {
     return Container(
-      height: height,
-      padding: EdgeInsets.all(isCompact ? 2.5 * vw : 4 * vw),
+      padding: EdgeInsets.all(3.5 * vw),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6 * vw), // 24px
         border: Border.all(color: const Color(0xFFEBEBEB), width: 1),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.02),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       child: Stack(
         children: [
@@ -168,10 +149,35 @@ class InvestmentServicesScreen extends StatelessWidget {
               Text(
                 subtitle,
                 style: GoogleFonts.poppins(
-                  fontSize: 2.03 * vw, // 8px
+                  fontSize: 2.3 * vw, // ~9px
                   fontWeight: FontWeight.w400,
                   color: const Color(0xFF717171),
                   height: 1.2,
+                ),
+              ),
+              const Spacer(),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 2.5 * vw, vertical: 1 * vw),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFFFF7A18), Color(0xFFFFB347)],
+                  ),
+                  borderRadius: BorderRadius.circular(4 * vw), // 18px radius
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.08),
+                      blurRadius: 4,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Text(
+                  'Upto 25% Off',
+                  style: GoogleFonts.poppins(
+                    fontSize: 2.03 * vw, // 8px
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ],
@@ -180,50 +186,11 @@ class InvestmentServicesScreen extends StatelessWidget {
             right: 0,
             bottom: 0,
             child: Image.asset(
-              assetPath,
-              width: isCompact ? 10 * vw : 15 * vw,
-              height: isCompact ? 10 * vw : 15 * vw,
+              illustrationPath,
+              width: 10 * vw,
+              height: 10 * vw,
               fit: BoxFit.contain,
-              errorBuilder: (context, error, stackTrace) => Icon(Icons.currency_exchange, color: const Color(0xFF14B8A6), size: 10 * vw),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildCircularItem(double vw, String label, String assetPath, Color themeColor) {
-    return SizedBox(
-      width: 18 * vw,
-      child: Column(
-        children: [
-          Container(
-            width: 14 * vw,
-            height: 14 * vw,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-              border: Border.all(color: themeColor.withValues(alpha: 0.2), width: 1.5),
-            ),
-            child: Center(
-              child: Image.asset(
-                assetPath,
-                width: 7 * vw,
-                height: 7 * vw,
-                fit: BoxFit.contain,
-                errorBuilder: (context, error, stackTrace) => Icon(Icons.savings_outlined, color: themeColor, size: 7 * vw),
-              ),
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            label,
-            textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(
-              fontSize: 2.54 * vw, // 10px
-              fontWeight: FontWeight.w500,
-              color: const Color(0xFF1A1D3A),
-              height: 1.2,
+              errorBuilder: (context, error, stackTrace) => Icon(Icons.travel_explore, color: const Color(0xFF0EA5E9), size: 8 * vw),
             ),
           ),
         ],

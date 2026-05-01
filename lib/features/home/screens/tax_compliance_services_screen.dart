@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/router/app_router.dart';
 
-class BankingServicesScreen extends StatelessWidget {
-  const BankingServicesScreen({super.key});
+class TaxComplianceServicesScreen extends StatelessWidget {
+  const TaxComplianceServicesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class BankingServicesScreen extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: [
-                    const Color(0xFFF0F4FF).withValues(alpha: 0.6),
+                    const Color(0xFFF0F9FF).withValues(alpha: 0.6),
                     Colors.white.withValues(alpha: 0.0),
                   ],
                 ),
@@ -59,52 +59,65 @@ class BankingServicesScreen extends StatelessWidget {
                   
                   SizedBox(height: 5 * vh),
 
-                  // AEPS Section
-                  _buildSection(vw, vh, 'AEPS', [
-                    _ServiceData('Cash\nWithdrawal', 'assets/images/cash_with.png'),
-                    _ServiceData('Balance\nInquiry', 'assets/images/balance_enq.png'),
-                    _ServiceData('Mini\nStatement', 'assets/images/mini_stat.png'),
-                    _ServiceData('Deposit', 'assets/images/deposit.png'),
-                  ], const Color(0xFF2F6FED)),
+                  // Main Title
+                  Text(
+                    'Tax & Compliance Services',
+                    style: GoogleFonts.poppins(
+                      fontSize: 4.07 * vw, // 16px
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xFF1A1D3A),
+                    ),
+                  ),
+                  SizedBox(height: 3 * vh),
 
-                  SizedBox(height: 4 * vh),
-
-                  // Micro ATM Services Section
-                  _buildSection(vw, vh, 'Micro ATM Services', [
-                    _ServiceData('Cash\nWithdrawal', 'assets/images/cash_with.png'),
-                    _ServiceData('Balance\nInquiry', 'assets/images/balance_enq.png'),
-                    _ServiceData('Mini\nStatement', 'assets/images/mini_stat.png'),
-                    _ServiceData('Deposit', 'assets/images/deposit.png'),
-                  ], const Color(0xFF2F6FED)),
-
-                  SizedBox(height: 4 * vh),
-
-                  // Aadhaar Pay and CMS Section
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  // Grid of Services
+                  GridView.count(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 4 * vw,
+                    crossAxisSpacing: 4 * vw,
+                    childAspectRatio: 165 / 160,
                     children: [
-                      Expanded(
-                        child: _buildSection(vw, vh, 'Aadhaar Pay', [
-                          _ServiceData('Cash\nWithdrawal', 'assets/images/cash_with.png'),
-                        ], const Color(0xFF2F6FED), isSmall: true),
+                      _buildServiceCard(
+                        vw,
+                        'PAN Application & Correction',
+                        '(via Authorized Agency)',
+                        'assets/icon/png/tax/ID_Card.png',
+                        const Color(0xFF14B8A6),
                       ),
-                      Expanded(
-                        child: _buildSection(vw, vh, 'CMS', [
-                          _ServiceData('Cash\nManagement\nServices', 'assets/images/deposit.png'),
-                        ], const Color(0xFF2F6FED), isSmall: true),
+                      _buildServiceCard(
+                        vw,
+                        'GST Registration',
+                        'Quick & easy GST registration',
+                        'assets/icon/png/tax/GST_Registration.png',
+                        const Color(0xFF14B8A6),
+                      ),
+                      _buildServiceCard(
+                        vw,
+                        'GST Return Filing',
+                        'File GST returns online with ease',
+                        'assets/icon/png/tax/Gst.png',
+                        const Color(0xFF14B8A6),
+                      ),
+                      _buildServiceCard(
+                        vw,
+                        'Assisted Income Tax Filing',
+                        'Expert help with your income tax filing',
+                        'assets/icon/png/tax/Tax.png',
+                        const Color(0xFF14B8A6),
+                      ),
+                      _buildServiceCard(
+                        vw,
+                        'Billing & Accounting Solutions',
+                        '(via Authorized Technology Partner)',
+                        'assets/icon/png/tax/Vyapar.png',
+                        const Color(0xFF14B8A6),
+                        isBrandIcon: true,
                       ),
                     ],
                   ),
 
-                  SizedBox(height: 4 * vh),
-
-                  // Open Bank Account Section
-                  _buildSection(vw, vh, 'Open Bank Account', [
-                    _ServiceData('Savings Account\nOpening', 'assets/images/cash_with.png'),
-                    _ServiceData('Credit Card\nSourcing', 'assets/images/cash_with.png'),
-                    _ServiceData('Current Account\nOpening', 'assets/images/cash_with.png'),
-                  ], const Color(0xFF2F6FED)),
-                  
                   SizedBox(height: 5 * vh),
                 ],
               ),
@@ -115,61 +128,58 @@ class BankingServicesScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSection(double vw, double vh, String title, List<_ServiceData> services, Color themeColor, {bool isSmall = false}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: GoogleFonts.poppins(
-            fontSize: 4.07 * vw, // 16px
-            fontWeight: FontWeight.w600,
-            color: const Color(0xFF1A1D3A),
+  Widget _buildServiceCard(double vw, String title, String subtitle, String assetPath, Color themeColor, {bool isBrandIcon = false}) {
+    return Container(
+      padding: EdgeInsets.all(4 * vw),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(6 * vw), // 24px
+        border: Border.all(color: const Color(0xFFEBEBEB), width: 1),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.02),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
           ),
-        ),
-        SizedBox(height: 2 * vh),
-        if (isSmall)
-          _buildServiceItem(vw, services[0], themeColor)
-        else
-          Wrap(
-            spacing: 5 * vw,
-            runSpacing: 3 * vh,
-            children: services.map((s) => _buildServiceItem(vw, s, themeColor)).toList(),
-          ),
-      ],
-    );
-  }
-
-  Widget _buildServiceItem(double vw, _ServiceData data, Color themeColor) {
-    return SizedBox(
-      width: 18 * vw, // ~70px
+        ],
+      ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 14 * vw, // ~55px
-            height: 14 * vw,
+            width: 12 * vw,
+            height: 12 * vw,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: isBrandIcon ? Colors.transparent : const Color(0xFFF8FAFC),
               shape: BoxShape.circle,
-              border: Border.all(color: themeColor.withValues(alpha: 0.2), width: 1.5),
             ),
             child: Center(
               child: Image.asset(
-                data.imagePath,
-                width: 7 * vw,
-                height: 7 * vw,
+                assetPath,
+                width: isBrandIcon ? 12 * vw : 7 * vw,
+                height: isBrandIcon ? 12 * vw : 7 * vw,
                 fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) => Icon(Icons.description_outlined, color: themeColor, size: 7 * vw),
               ),
             ),
           ),
-          const SizedBox(height: 8),
+          const Spacer(),
           Text(
-            data.title,
-            textAlign: TextAlign.center,
+            title,
             style: GoogleFonts.poppins(
-              fontSize: 2.54 * vw, // ~10px
-              fontWeight: FontWeight.w500,
+              fontSize: 2.8 * vw, // ~11px
+              fontWeight: FontWeight.w700,
               color: const Color(0xFF1A1D3A),
+              height: 1.2,
+            ),
+          ),
+          SizedBox(height: 0.5 * vw),
+          Text(
+            subtitle,
+            style: GoogleFonts.poppins(
+              fontSize: 2.3 * vw, // ~9px
+              fontWeight: FontWeight.w400,
+              color: const Color(0xFF717171),
               height: 1.2,
             ),
           ),
@@ -223,10 +233,4 @@ class BankingServicesScreen extends StatelessWidget {
       ],
     );
   }
-}
-
-class _ServiceData {
-  final String title;
-  final String imagePath;
-  _ServiceData(this.title, this.imagePath);
 }

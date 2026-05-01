@@ -44,7 +44,7 @@ class LoanServicesScreen extends StatelessWidget {
                 children: [
                   // Header
                   Padding(
-                    padding: EdgeInsets.only(top: 2 * vh, bottom: 3 * vh),
+                    padding: EdgeInsets.only(top: 2 * vh, bottom: 2 * vh),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -57,16 +57,7 @@ class LoanServicesScreen extends StatelessWidget {
                     ),
                   ),
                   
-                  // Main Title
-                  Text(
-                    'Loan Services',
-                    style: GoogleFonts.poppins(
-                      fontSize: 4.07 * vw, // 16px
-                      fontWeight: FontWeight.w700,
-                      color: const Color(0xFF1A1D3A),
-                    ),
-                  ),
-                  SizedBox(height: 3 * vh),
+                  SizedBox(height: 5 * vh),
 
                   // Retail Loans Section
                   _buildSection(vw, vh, 'Retail Loans', [

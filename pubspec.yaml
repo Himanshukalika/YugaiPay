@@ -58,3 +58,7 @@ flutter:
     - assets/icon/png/
     - assets/icon/png/insurance/
     - assets/icon/png/investment/
+    - assets/icon/png/tax/
+    - assets/icon/png/travel/
+    - assets/icon/png/alert/
+    - assets/icon/png/payment/
