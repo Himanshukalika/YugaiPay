@@ -15,7 +15,6 @@ class AlertScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: _buildBottomNavBar(context, vw, vh),
       body: Stack(
         children: [
           // Subtle top-left gradient blob
@@ -104,56 +103,6 @@ class AlertScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildBottomNavBar(BuildContext context, double vw, double vh) {
-    return Container(
-      height: 9 * vh,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, -5),
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          GestureDetector(
-            onTap: () => context.go(AppRoutes.home),
-            child: _buildNavItem(vw, Icons.home_outlined, 'Home', false),
-          ),
-          _buildNavItem(vw, Icons.search, 'Search', false),
-          _buildNavItem(vw, Icons.notifications, 'Alerts', true),
-          _buildNavItem(vw, Icons.access_time, 'Report', false),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildNavItem(double vw, IconData icon, String label, bool isActive) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          icon,
-          color: isActive ? const Color(0xFF6366F1) : const Color(0xFF1A1D3A),
-          size: 6 * vw,
-        ),
-        const SizedBox(height: 4),
-        Text(
-          label,
-          style: GoogleFonts.poppins(
-            fontSize: 2.5 * vw,
-            fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
-            color: isActive ? const Color(0xFF6366F1) : const Color(0xFF1A1D3A),
-          ),
-        ),
-      ],
     );
   }
 }

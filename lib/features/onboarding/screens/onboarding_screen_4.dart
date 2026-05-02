@@ -26,7 +26,7 @@ class _OnboardingScreen4State extends State<OnboardingScreen4> {
     // Figma spec: After delay -> Navigate with Smart Animate
     Timer(const Duration(milliseconds: 1500), () {
       if (mounted) {
-        context.go(AppRoutes.home); // Navigate to Home as requested
+        context.go(AppRoutes.signup); // Navigate to SignUp after onboarding
       }
     });
   }

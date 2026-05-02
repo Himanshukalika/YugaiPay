@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'otp_verification_screen.dart';
+import 'package:go_router/go_router.dart';
+import '../../../core/router/app_router.dart';
 
 class SigninScreen extends StatefulWidget {
   const SigninScreen({super.key});
@@ -140,12 +141,7 @@ class _SigninScreenState extends State<SigninScreen> {
                                 const SizedBox(height: 24),
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const OTPVerificationScreen(),
-                                      ),
-                                    );
+                                    context.push(AppRoutes.otp);
                                   },
                                   child: Container(
                                     width: 345,
@@ -175,6 +171,28 @@ class _SigninScreenState extends State<SigninScreen> {
                                           height: 1.0,
                                         ),
                                       ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
+                                GestureDetector(
+                                  onTap: () => context.push(AppRoutes.signup),
+                                  child: RichText(
+                                    text: TextSpan(
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 14,
+                                        color: const Color(0xFF64748B),
+                                      ),
+                                      children: [
+                                        const TextSpan(text: "Don't have an account? "),
+                                        TextSpan(
+                                          text: 'Sign Up',
+                                          style: GoogleFonts.poppins(
+                                            fontWeight: FontWeight.w700,
+                                            color: const Color(0xFFFFA143),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),

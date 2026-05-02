@@ -24,6 +24,9 @@ import '../../features/home/screens/tax_compliance_services_screen.dart';
 import '../../features/home/screens/travel_booking_services_screen.dart';
 import '../../features/home/screens/alert_screen.dart';
 import '../../features/home/screens/search_screen.dart';
+import '../../features/auth/screens/signup_screen.dart';
+import '../../features/auth/screens/signin_screen.dart';
+import '../../features/auth/screens/otp_verification_screen.dart';
 import '../shell/main_shell.dart';
 
 class AppRoutes {
@@ -34,6 +37,9 @@ class AppRoutes {
   static const String permission1 = '/permission1';
   static const String permission2 = '/permission2';
   static const String login = '/login';
+  static const String signin = '/signin';
+  static const String signup = '/signup';
+  static const String otp = '/otp';
   static const String home = '/home';
   static const String send = '/send';
   static const String receive = '/receive';
@@ -90,6 +96,18 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.login,
       builder: (context, state) => const LoginScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.signin,
+      builder: (context, state) => const SigninScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.signup,
+      builder: (context, state) => const SignUpScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.otp,
+      builder: (context, state) => const OTPVerificationScreen(),
     ),
     
     // Service Screens (Outside shell to hide bottom nav or have custom header)

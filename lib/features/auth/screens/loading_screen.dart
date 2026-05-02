@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'permission_screen.dart';
+import 'package:go_router/go_router.dart';
+import '../../../core/router/app_router.dart';
 import 'dart:math' as math;
 
 class LoadingScreen extends StatefulWidget {
@@ -24,10 +25,7 @@ class _LoadingScreenState extends State<LoadingScreen> with SingleTickerProvider
     // Auto-navigate to PermissionScreen after 3 seconds
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const PermissionScreen()),
-        );
+        context.pushReplacement(AppRoutes.permission1);
       }
     });
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'loading_screen.dart';
+import 'package:go_router/go_router.dart';
+import '../../../core/router/app_router.dart';
 
 class OTPVerificationScreen extends StatelessWidget {
   const OTPVerificationScreen({super.key});
@@ -96,12 +97,7 @@ class OTPVerificationScreen extends StatelessWidget {
                               // Action Button
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const LoadingScreen(),
-                                    ),
-                                  );
+                                  context.push(AppRoutes.loading);
                                 },
                                 child: Container(
                                   width: 345,
