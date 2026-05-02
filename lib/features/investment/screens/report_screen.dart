@@ -19,7 +19,7 @@ class ReportScreen extends StatelessWidget {
           ),
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 width: 87.79 * vw, // 345px
                 height: 2.82 * vh, // 24px
                 child: Row(

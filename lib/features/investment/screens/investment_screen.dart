@@ -70,8 +70,8 @@ class InvestmentScreen extends StatelessWidget {
                             Positioned(
                               top: 2.58 * vh, // ~22px
                               left: 3.31 * vw, // ~13px
-                              child: Container(
-                                width: 32.0 * vw, // Increased from 25vw to fit "low" on the first line
+                              child: SizedBox(
+                                width: 32.0 * vw, 
                                 // height removed to fix overflow
                                 child: Column(
                                   children: [
@@ -117,7 +117,7 @@ class InvestmentScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(width: 1.02 * vw), // ~4px gap
-                      Container(
+                      SizedBox(
                         width: 41.73 * vw, // ~164px
                         height: 17.37 * vh, // ~148px
                         child: Column(
@@ -250,13 +250,13 @@ class InvestmentScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 3.99 * vh), // ~34px gap
-                    Container(
+                    SizedBox(
                     width: 87.79 * vw, // ~345px
                     height: 10.68 * vh, // ~91px
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
+                        SizedBox(
                           width: 22.65 * vw, // ~89px
                           height: 10.68 * vh, // ~91px
                           child: Column(
@@ -299,7 +299,7 @@ class InvestmentScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width: 28.75 * vw, // ~113px
                           height: 10.68 * vh, // ~91px
                           child: Column(
@@ -342,7 +342,7 @@ class InvestmentScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width: 18.83 * vw, // ~74px
                           height: 10.68 * vh, // ~91px
                           child: Column(

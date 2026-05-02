@@ -7,13 +7,12 @@ import '../../features/home/screens/home_screen.dart';
 import '../../features/send/screens/send_screen.dart';
 import '../../features/receive/screens/receive_screen.dart';
 import '../../features/home/screens/history_screen.dart';
-import '../../features/profile/screens/profile_screen.dart';
+import '../../features/home/screens/profile_screen.dart';
 import '../../features/onboarding/screens/onboarding_screen.dart';
 import '../../features/auth/screens/loading_screen.dart';
 import '../../features/auth/screens/permission_screen.dart';
 import '../../features/auth/screens/permission_screen_2.dart';
 import '../../features/auth/screens/login_screen.dart';
-import '../../features/investment/screens/investment_screen.dart';
 import '../../features/investment/screens/report_screen.dart';
 import '../../features/home/screens/investment_services_screen.dart';
 import '../../features/home/screens/banking_services_screen.dart';
@@ -27,6 +26,9 @@ import '../../features/home/screens/search_screen.dart';
 import '../../features/auth/screens/signup_screen.dart';
 import '../../features/auth/screens/signin_screen.dart';
 import '../../features/auth/screens/otp_verification_screen.dart';
+import '../../features/home/screens/profile/edit_personal_details.dart';
+import '../../features/home/screens/profile/edit_address_details.dart';
+import '../../features/home/screens/profile/notifications_screen.dart';
 import '../shell/main_shell.dart';
 
 class AppRoutes {
@@ -55,6 +57,9 @@ class AppRoutes {
   static const String travelBookingServices = '/travel-booking-services';
   static const String alerts = '/alerts';
   static const String search = '/search';
+  static const String editPersonalDetails = '/edit-personal-details';
+  static const String editAddressDetails = '/edit-address-details';
+  static const String notifications = '/notifications';
 }
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -142,6 +147,18 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.travelBookingServices,
       builder: (context, state) => const TravelBookingServicesScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.editPersonalDetails,
+      builder: (context, state) => const EditPersonalDetailsScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.editAddressDetails,
+      builder: (context, state) => const EditAddressDetailsScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.notifications,
+      builder: (context, state) => const NotificationsScreen(),
     ),
 
     // Main Shell (bottom nav shared between core screens)
