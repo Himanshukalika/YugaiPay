@@ -268,7 +268,13 @@ class ProfileScreen extends StatelessWidget {
               vw,
               onTap: () => context.push(AppRoutes.editAddressDetails),
             ),
-            _buildSettingItem(Icons.credit_card_outlined, 'Bank Accounts', 'Manage linked accounts', vw),
+            _buildSettingItem(
+              Icons.credit_card_outlined,
+              'Bank Accounts',
+              'Manage linked accounts',
+              vw,
+              onTap: () => context.push(AppRoutes.bankAccounts),
+            ),
             _buildSettingItem(Icons.verified_user_outlined, 'KYC Status', 'Verified', vw),
             
             SizedBox(height: 3 * vh),
@@ -280,8 +286,20 @@ class ProfileScreen extends StatelessWidget {
               vw,
               onTap: () => context.push(AppRoutes.notifications),
             ),
-            _buildSettingItem(Icons.language_outlined, 'Languages', 'Manage languages', vw),
-            _buildSettingItem(Icons.lock_outline, 'Security & Privacy', 'PIN, biometric', vw),
+            _buildSettingItem(
+              Icons.language_outlined,
+              'Languages',
+              'Manage languages',
+              vw,
+              onTap: () => context.push(AppRoutes.languages),
+            ),
+            _buildSettingItem(
+              Icons.lock_outline,
+              'Security & Privacy',
+              'PIN, biometric',
+              vw,
+              onTap: () => context.push(AppRoutes.security),
+            ),
             
             SizedBox(height: 3 * vh),
             _buildSectionHeader('SUPPORT & LEGAL', vw),
@@ -292,7 +310,13 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(height: 3 * vh),
             _buildSectionHeader('More', vw),
             _buildSettingItem(Icons.share_outlined, 'Refer & Earn', 'Invite friends', vw),
-            _buildSettingItem(Icons.star_outline, 'Rate Us', 'Share your feedback', vw),
+            _buildSettingItem(
+              Icons.star_outline,
+              'Rate Us',
+              'Share your feedback',
+              vw,
+              onTap: () => context.push(AppRoutes.rateUs),
+            ),
             
             SizedBox(height: 4 * vh),
             // Logout Button

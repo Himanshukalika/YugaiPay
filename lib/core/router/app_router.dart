@@ -29,6 +29,11 @@ import '../../features/auth/screens/otp_verification_screen.dart';
 import '../../features/home/screens/profile/edit_personal_details.dart';
 import '../../features/home/screens/profile/edit_address_details.dart';
 import '../../features/home/screens/profile/notifications_screen.dart';
+import '../../features/home/screens/profile/rateus_screen.dart';
+import '../../features/home/screens/profile/languages_screen.dart';
+import '../../features/home/screens/profile/security_screen.dart';
+import '../../features/home/screens/profile/bank_accounts_screen.dart';
+import '../../features/home/screens/profile/add_bank_screen.dart';
 import '../shell/main_shell.dart';
 
 class AppRoutes {
@@ -60,6 +65,11 @@ class AppRoutes {
   static const String editPersonalDetails = '/edit-personal-details';
   static const String editAddressDetails = '/edit-address-details';
   static const String notifications = '/notifications';
+  static const String rateUs = '/rate-us';
+  static const String languages = '/languages';
+  static const String security = '/security';
+  static const String bankAccounts = '/bank-accounts';
+  static const String addBank = '/add-bank';
 }
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -159,6 +169,26 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.notifications,
       builder: (context, state) => const NotificationsScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.rateUs,
+      builder: (context, state) => const RateUsScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.languages,
+      builder: (context, state) => const LanguagesScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.security,
+      builder: (context, state) => const SecurityScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.bankAccounts,
+      builder: (context, state) => const BankAccountsScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.addBank,
+      builder: (context, state) => const AddBankScreen(),
     ),
 
     // Main Shell (bottom nav shared between core screens)

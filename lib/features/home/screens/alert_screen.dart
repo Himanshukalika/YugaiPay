@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
-import '../../../core/router/app_router.dart';
 
 class AlertScreen extends StatelessWidget {
   const AlertScreen({super.key});
