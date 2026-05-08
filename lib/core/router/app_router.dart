@@ -29,11 +29,15 @@ import '../../features/auth/screens/otp_verification_screen.dart';
 import '../../features/home/screens/profile/edit_personal_details.dart';
 import '../../features/home/screens/profile/edit_address_details.dart';
 import '../../features/home/screens/profile/notifications_screen.dart';
+import '../../features/home/screens/profile/refer_earn_screen.dart';
 import '../../features/home/screens/profile/rateus_screen.dart';
 import '../../features/home/screens/profile/languages_screen.dart';
 import '../../features/home/screens/profile/security_screen.dart';
 import '../../features/home/screens/profile/bank_accounts_screen.dart';
 import '../../features/home/screens/profile/add_bank_screen.dart';
+import '../../features/utility/screens/no_network_screen.dart';
+import '../../features/utility/screens/error_screen.dart';
+import '../../features/utility/screens/session_expired_screen.dart';
 import '../shell/main_shell.dart';
 
 class AppRoutes {
@@ -65,11 +69,15 @@ class AppRoutes {
   static const String editPersonalDetails = '/edit-personal-details';
   static const String editAddressDetails = '/edit-address-details';
   static const String notifications = '/notifications';
+  static const String referEarn = '/refer-earn';
   static const String rateUs = '/rate-us';
   static const String languages = '/languages';
   static const String security = '/security';
   static const String bankAccounts = '/bank-accounts';
   static const String addBank = '/add-bank';
+  static const String noNetwork = '/no-network';
+  static const String error = '/error';
+  static const String sessionExpired = '/session-expired';
 }
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -124,7 +132,7 @@ final appRouter = GoRouter(
       path: AppRoutes.otp,
       builder: (context, state) => const OTPVerificationScreen(),
     ),
-    
+
     // Service Screens (Outside shell to hide bottom nav or have custom header)
     GoRoute(
       path: AppRoutes.investment,
@@ -171,6 +179,10 @@ final appRouter = GoRouter(
       builder: (context, state) => const NotificationsScreen(),
     ),
     GoRoute(
+      path: AppRoutes.referEarn,
+      builder: (context, state) => const ReferEarnScreen(),
+    ),
+    GoRoute(
       path: AppRoutes.rateUs,
       builder: (context, state) => const RateUsScreen(),
     ),
@@ -189,6 +201,18 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.addBank,
       builder: (context, state) => const AddBankScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.noNetwork,
+      builder: (context, state) => const NoNetworkScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.error,
+      builder: (context, state) => const ErrorScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.sessionExpired,
+      builder: (context, state) => const SessionExpiredScreen(),
     ),
 
     // Main Shell (bottom nav shared between core screens)

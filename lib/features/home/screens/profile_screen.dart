@@ -92,7 +92,11 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Icon(Icons.phone_outlined, size: 3 * vw, color: const Color(0xFF6B7280)),
+                        Icon(
+                          Icons.phone_outlined,
+                          size: 3 * vw,
+                          color: const Color(0xFF6B7280),
+                        ),
                         SizedBox(width: 1 * vw),
                         Text(
                           '+91 0000000000',
@@ -106,7 +110,11 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Icon(Icons.email_outlined, size: 3 * vw, color: const Color(0xFF6B7280)),
+                        Icon(
+                          Icons.email_outlined,
+                          size: 3 * vw,
+                          color: const Color(0xFF6B7280),
+                        ),
                         SizedBox(width: 1 * vw),
                         Text(
                           'rajesh@email.com',
@@ -131,10 +139,7 @@ class ProfileScreen extends StatelessWidget {
                 gradient: const LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [
-                    Color(0xFF1E293B),
-                    Color(0xFF0F172A),
-                  ],
+                  colors: [Color(0xFF1E293B), Color(0xFF0F172A)],
                 ),
                 borderRadius: BorderRadius.circular(6 * vw),
                 boxShadow: [
@@ -164,9 +169,7 @@ class ProfileScreen extends StatelessWidget {
                       SizedBox(
                         width: 10 * vw,
                         height: 10 * vw,
-                        child: CustomPaint(
-                          painter: MiniLogoPainter(),
-                        ),
+                        child: CustomPaint(painter: MiniLogoPainter()),
                       ),
                     ],
                   ),
@@ -197,7 +200,11 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      Icon(Icons.copy_outlined, color: Colors.white.withValues(alpha: 0.6), size: 4 * vw),
+                      Icon(
+                        Icons.copy_outlined,
+                        color: Colors.white.withValues(alpha: 0.6),
+                        size: 4 * vw,
+                      ),
                     ],
                   ),
                   SizedBox(height: 2 * vh),
@@ -247,7 +254,10 @@ class ProfileScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Icon(Icons.keyboard_arrow_down, color: Color(0xFF6B7280)),
+                  const Icon(
+                    Icons.keyboard_arrow_down,
+                    color: Color(0xFF6B7280),
+                  ),
                 ],
               ),
             ),
@@ -275,8 +285,13 @@ class ProfileScreen extends StatelessWidget {
               vw,
               onTap: () => context.push(AppRoutes.bankAccounts),
             ),
-            _buildSettingItem(Icons.verified_user_outlined, 'KYC Status', 'Verified', vw),
-            
+            _buildSettingItem(
+              Icons.verified_user_outlined,
+              'KYC Status',
+              'Verified',
+              vw,
+            ),
+
             SizedBox(height: 3 * vh),
             _buildSectionHeader('PREFERENCES', vw),
             _buildSettingItem(
@@ -300,16 +315,37 @@ class ProfileScreen extends StatelessWidget {
               vw,
               onTap: () => context.push(AppRoutes.security),
             ),
-            
+
             SizedBox(height: 3 * vh),
             _buildSectionHeader('SUPPORT & LEGAL', vw),
-            _buildSettingItem(Icons.help_center_outlined, 'Help Center', 'FAQs and support', vw),
-            _buildSettingItem(Icons.description_outlined, 'Terms & Conditions', 'Legal information', vw),
-            _buildSettingItem(Icons.privacy_tip_outlined, 'Privacy Policy', 'How we use your data', vw),
-            
+            _buildSettingItem(
+              Icons.help_center_outlined,
+              'Help Center',
+              'FAQs and support',
+              vw,
+            ),
+            _buildSettingItem(
+              Icons.description_outlined,
+              'Terms & Conditions',
+              'Legal information',
+              vw,
+            ),
+            _buildSettingItem(
+              Icons.privacy_tip_outlined,
+              'Privacy Policy',
+              'How we use your data',
+              vw,
+            ),
+
             SizedBox(height: 3 * vh),
             _buildSectionHeader('More', vw),
-            _buildSettingItem(Icons.share_outlined, 'Refer & Earn', 'Invite friends', vw),
+            _buildSettingItem(
+              Icons.share_outlined,
+              'Refer & Earn',
+              'Invite friends',
+              vw,
+              onTap: () => context.push(AppRoutes.referEarn),
+            ),
             _buildSettingItem(
               Icons.star_outline,
               'Rate Us',
@@ -317,7 +353,7 @@ class ProfileScreen extends StatelessWidget {
               vw,
               onTap: () => context.push(AppRoutes.rateUs),
             ),
-            
+
             SizedBox(height: 4 * vh),
             // Logout Button
             Container(
@@ -357,15 +393,18 @@ class ProfileScreen extends StatelessWidget {
 
   Widget _buildCardDots() {
     return Row(
-      children: List.generate(4, (index) => Container(
-        margin: const EdgeInsets.symmetric(horizontal: 2),
-        width: 1.5 * 2, // approximation
-        height: 1.5 * 2,
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          shape: BoxShape.circle,
+      children: List.generate(
+        4,
+        (index) => Container(
+          margin: const EdgeInsets.symmetric(horizontal: 2),
+          width: 1.5 * 2, // approximation
+          height: 1.5 * 2,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+          ),
         ),
-      )),
+      ),
     );
   }
 
@@ -381,7 +420,11 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
         SizedBox(width: 1 * vw),
-        Icon(Icons.call_made, size: 3 * vw, color: Colors.white.withValues(alpha: 0.8)),
+        Icon(
+          Icons.call_made,
+          size: 3 * vw,
+          color: Colors.white.withValues(alpha: 0.8),
+        ),
       ],
     );
   }
@@ -400,54 +443,64 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSettingItem(IconData icon, String title, String subtitle, double vw, {VoidCallback? onTap}) {
+  Widget _buildSettingItem(
+    IconData icon,
+    String title,
+    String subtitle,
+    double vw, {
+    VoidCallback? onTap,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: EdgeInsets.only(bottom: 1.5 * vw),
-      padding: EdgeInsets.all(4 * vw),
-      decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
-        borderRadius: BorderRadius.circular(4 * vw),
-      ),
-      child: Row(
-        children: [
-          Container(
-            padding: EdgeInsets.all(2 * vw),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(2 * vw),
+        padding: EdgeInsets.all(4 * vw),
+        decoration: BoxDecoration(
+          color: const Color(0xFFF9FAFB),
+          borderRadius: BorderRadius.circular(4 * vw),
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: EdgeInsets.all(2 * vw),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(2 * vw),
+              ),
+              child: Icon(icon, color: const Color(0xFF1A1D3A), size: 5 * vw),
             ),
-            child: Icon(icon, color: const Color(0xFF1A1D3A), size: 5 * vw),
-          ),
-          SizedBox(width: 4 * vw),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: GoogleFonts.poppins(
-                    fontSize: 3.5 * vw,
-                    fontWeight: FontWeight.w600,
-                    color: const Color(0xFF1A1D3A),
+            SizedBox(width: 4 * vw),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: GoogleFonts.poppins(
+                      fontSize: 3.5 * vw,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xFF1A1D3A),
+                    ),
                   ),
-                ),
-                Text(
-                  subtitle,
-                  style: GoogleFonts.poppins(
-                    fontSize: 2.5 * vw,
-                    fontWeight: FontWeight.w400,
-                    color: const Color(0xFF6B7280),
+                  Text(
+                    subtitle,
+                    style: GoogleFonts.poppins(
+                      fontSize: 2.5 * vw,
+                      fontWeight: FontWeight.w400,
+                      color: const Color(0xFF6B7280),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Icon(Icons.chevron_right, color: const Color(0xFF6B7280), size: 5 * vw),
-        ],
+            Icon(
+              Icons.chevron_right,
+              color: const Color(0xFF6B7280),
+              size: 5 * vw,
+            ),
+          ],
+        ),
       ),
-    ),
     );
   }
 }
@@ -456,7 +509,7 @@ class MiniLogoPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final double scale = size.width / 100;
-    
+
     final paint1 = Paint()
       ..shader = const LinearGradient(
         begin: Alignment.topLeft,
@@ -473,22 +526,32 @@ class MiniLogoPainter extends CustomPainter {
 
     // Simplified logo for the card
     Path path1 = Path();
-    path1.addRRect(RRect.fromLTRBAndCorners(
-      0, 0, 30 * scale, 80 * scale,
-      topLeft: const Radius.circular(8),
-      topRight: const Radius.circular(40),
-      bottomRight: const Radius.circular(40),
-      bottomLeft: const Radius.circular(8),
-    ));
+    path1.addRRect(
+      RRect.fromLTRBAndCorners(
+        0,
+        0,
+        30 * scale,
+        80 * scale,
+        topLeft: const Radius.circular(8),
+        topRight: const Radius.circular(40),
+        bottomRight: const Radius.circular(40),
+        bottomLeft: const Radius.circular(8),
+      ),
+    );
 
     Path path2 = Path();
-    path2.addRRect(RRect.fromLTRBAndCorners(
-      0, 0, 30 * scale, 100 * scale,
-      topLeft: const Radius.circular(40),
-      topRight: const Radius.circular(8),
-      bottomRight: const Radius.circular(40),
-      bottomLeft: const Radius.circular(8),
-    ));
+    path2.addRRect(
+      RRect.fromLTRBAndCorners(
+        0,
+        0,
+        30 * scale,
+        100 * scale,
+        topLeft: const Radius.circular(40),
+        topRight: const Radius.circular(8),
+        bottomRight: const Radius.circular(40),
+        bottomLeft: const Radius.circular(8),
+      ),
+    );
 
     canvas.save();
     canvas.translate(20 * scale, 10 * scale);

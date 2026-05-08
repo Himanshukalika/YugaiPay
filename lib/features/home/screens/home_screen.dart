@@ -18,7 +18,35 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-
+      // TODO: Remove after testing
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          FloatingActionButton.extended(
+            heroTag: 'session',
+            onPressed: () => context.go(AppRoutes.sessionExpired),
+            backgroundColor: const Color(0xFFF97316),
+            label: const Text('Session', style: TextStyle(color: Colors.white)),
+            icon: const Icon(Icons.timer_off_outlined, color: Colors.white),
+          ),
+          const SizedBox(height: 10),
+          FloatingActionButton.extended(
+            heroTag: 'error',
+            onPressed: () => context.go(AppRoutes.error),
+            backgroundColor: const Color(0xFFEF4444),
+            label: const Text('Error', style: TextStyle(color: Colors.white)),
+            icon: const Icon(Icons.error_outline, color: Colors.white),
+          ),
+          const SizedBox(height: 10),
+          FloatingActionButton.extended(
+            heroTag: 'nonet',
+            onPressed: () => context.go(AppRoutes.noNetwork),
+            backgroundColor: const Color(0xFF7C3AED),
+            label: const Text('No Network', style: TextStyle(color: Colors.white)),
+            icon: const Icon(Icons.wifi_off, color: Colors.white),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: SizedBox(
           height: 230 * vh, // Adjusted for fixed navbar
