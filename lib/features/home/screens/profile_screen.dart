@@ -219,49 +219,6 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 3 * vh),
-            // Partner Role Section
-            Container(
-              padding: EdgeInsets.all(4 * vw),
-              decoration: BoxDecoration(
-                color: const Color(0xFFF9FAFB),
-                borderRadius: BorderRadius.circular(4 * vw),
-                border: Border.all(color: const Color(0xFFF3F4F6)),
-              ),
-              child: Row(
-                children: [
-                  const Icon(Icons.person_outline, color: Color(0xFF1A1D3A)),
-                  SizedBox(width: 4 * vw),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Select Your Partner Role',
-                          style: GoogleFonts.poppins(
-                            fontSize: 3.5 * vw,
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF1A1D3A),
-                          ),
-                        ),
-                        Text(
-                          'Choose your partner level to generate your YugaiPay Partner ID.',
-                          style: GoogleFonts.poppins(
-                            fontSize: 2.5 * vw,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xFF6B7280),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Icon(
-                    Icons.keyboard_arrow_down,
-                    color: Color(0xFF6B7280),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 3 * vh),
             // Settings Groups
             _buildSectionHeader('ACCOUNT SETTINGS', vw),
             _buildSettingItem(

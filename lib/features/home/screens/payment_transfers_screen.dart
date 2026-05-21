@@ -69,10 +69,10 @@ class PaymentTransfersScreen extends StatelessWidget {
 
                   // Recharges Section
                   _buildSection(vw, vh, 'Recharges', [
-                    _ServiceData('Mobile\nRecharge', 'assets/images/mob_rec.png'),
-                    _ServiceData('DTH', 'assets/images/elec_bill.png'),
-                    _ServiceData('FASTag\nRecharge', 'assets/images/fastag_rec.png'),
-                    _ServiceData('NCMC\nRecharge', 'assets/images/DMT.png'),
+                    _ServiceData('Mobile\nRecharge', 'assets/images/mob_rec.png', onTap: () => context.push(AppRoutes.mobileRecharge)),
+                    _ServiceData('DTH', 'assets/images/elec_bill.png', onTap: () => context.push(AppRoutes.dthRecharge)),
+                    _ServiceData('FASTag\nRecharge', 'assets/images/fastag_rec.png', onTap: () => context.push(AppRoutes.fastagRecharge)),
+                    _ServiceData('NCMC\nRecharge', 'assets/images/DMT.png', onTap: () => context.push(AppRoutes.ncmcRecharge)),
                   ], const Color(0xFF8B5CF6)),
 
                   SizedBox(height: 4 * vh),
@@ -118,7 +118,9 @@ class PaymentTransfersScreen extends StatelessWidget {
   }
 
   Widget _buildServiceItem(double vw, _ServiceData data, Color themeColor) {
-    return SizedBox(
+    return GestureDetector(
+      onTap: data.onTap,
+      child: SizedBox(
       width: 18 * vw,
       child: Column(
         children: [
@@ -152,7 +154,7 @@ class PaymentTransfersScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ));
   }
 
   Widget _buildBottomNavBar(BuildContext context, double vw, double vh) {
@@ -205,5 +207,6 @@ class PaymentTransfersScreen extends StatelessWidget {
 class _ServiceData {
   final String title;
   final String imagePath;
-  _ServiceData(this.title, this.imagePath);
+  final VoidCallback? onTap;
+  _ServiceData(this.title, this.imagePath, {this.onTap});
 }

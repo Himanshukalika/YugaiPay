@@ -9,9 +9,9 @@ class BankAccountsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFF8FAFC),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color(0xFFF8FAFC),
         elevation: 0,
         scrolledUnderElevation: 0,
         leading: IconButton(
@@ -30,7 +30,8 @@ class BankAccountsScreen extends StatelessWidget {
         titleSpacing: 0,
         actions: [
           IconButton(
-            icon: const Icon(Icons.help_outline, color: Color(0xFF0F172A)),
+            icon: const Icon(Icons.help_outline_rounded,
+                color: Color(0xFF0F172A), size: 22),
             onPressed: () {},
           ),
           const SizedBox(width: 8),
@@ -38,100 +39,163 @@ class BankAccountsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.05),
-                    blurRadius: 10,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: const Color(0xFFF3F4F6)),
-                    ),
-                    child: Image.asset(
-                      'assets/images/banklogo.png',
-                      width: 40,
-                      height: 40,
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: Row(
-                      children: [
-                        Text(
-                          'Canara Ban...-1234',
-                          style: GoogleFonts.poppins(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF0F172A),
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF22C55E),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Text(
-                            'Primary',
-                            style: GoogleFonts.poppins(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Icon(Icons.chevron_right, color: Color(0xFF0F172A)),
-                ],
+          // Top gradient section
+          Container(
+            width: double.infinity,
+            height: 6,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xFFEEF2FF), Color(0xFFF8FAFC)],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
               ),
             ),
           ),
-          const Spacer(),
+
+          const SizedBox(height: 20),
+
+          // Bank account card
           Padding(
-            padding: const EdgeInsets.fromLTRB(24, 0, 24, 40),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: _BankCard(
+              logoAsset: 'assets/images/banklogo.png',
+              bankName: 'Canara Ban...-1234',
+              isPrimary: true,
+              onTap: () {},
+            ),
+          ),
+
+          const Spacer(),
+
+          // Add New Bank Account button
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 36),
             child: SizedBox(
               width: double.infinity,
-              height: 64,
+              height: 58,
               child: ElevatedButton(
                 onPressed: () => context.push(AppRoutes.addBank),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF1A1D3A),
                   foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
                   elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                 ),
                 child: Text(
                   'Add New Bank Account',
                   style: GoogleFonts.poppins(
-                    fontSize: 16,
+                    fontSize: 15,
                     fontWeight: FontWeight.w700,
+                    color: Colors.white,
                   ),
                 ),
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _BankCard extends StatelessWidget {
+  final String logoAsset;
+  final String bankName;
+  final bool isPrimary;
+  final VoidCallback? onTap;
+
+  const _BankCard({
+    required this.logoAsset,
+    required this.bankName,
+    this.isPrimary = false,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFF0F172A).withValues(alpha: 0.06),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            // Bank logo
+            Container(
+              width: 48,
+              height: 48,
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: const Color(0xFFF1F5F9),
+                  width: 1.5,
+                ),
+              ),
+              child: Image.asset(
+                logoAsset,
+                fit: BoxFit.contain,
+              ),
+            ),
+
+            const SizedBox(width: 14),
+
+            // Bank name + badge
+            Expanded(
+              child: Row(
+                children: [
+                  Text(
+                    bankName,
+                    style: GoogleFonts.poppins(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xFF0F172A),
+                    ),
+                  ),
+                  if (isPrimary) ...[
+                    const SizedBox(width: 8),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF22C55E),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        'Primary',
+                        style: GoogleFonts.poppins(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+
+            // Chevron
+            const Icon(
+              Icons.chevron_right_rounded,
+              color: Color(0xFF94A3B8),
+              size: 22,
+            ),
+          ],
+        ),
       ),
     );
   }

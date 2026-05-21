@@ -36,6 +36,11 @@ import '../../features/home/screens/profile/security_screen.dart';
 import '../../features/home/screens/profile/bank_accounts_screen.dart';
 import '../../features/home/screens/profile/add_bank_screen.dart';
 import '../../features/utility/screens/no_network_screen.dart';
+import '../../features/home/screens/mobile_recharge_screen.dart';
+import '../../features/home/screens/dth_recharge_screen.dart';
+import '../../features/home/screens/fastag_recharge_screen.dart';
+import '../../features/home/screens/fastag_detail_screen.dart';
+import '../../features/home/screens/ncmc_recharge_screen.dart';
 import '../../features/utility/screens/error_screen.dart';
 import '../../features/utility/screens/session_expired_screen.dart';
 import '../shell/main_shell.dart';
@@ -75,6 +80,11 @@ class AppRoutes {
   static const String security = '/security';
   static const String bankAccounts = '/bank-accounts';
   static const String addBank = '/add-bank';
+  static const String mobileRecharge = '/mobile-recharge';
+  static const String dthRecharge = '/dth-recharge';
+  static const String fastagRecharge = '/fastag-recharge';
+  static const String fastagDetail = '/fastag-detail';
+  static const String ncmcRecharge = '/ncmc-recharge';
   static const String noNetwork = '/no-network';
   static const String error = '/error';
   static const String sessionExpired = '/session-expired';
@@ -201,6 +211,28 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.addBank,
       builder: (context, state) => const AddBankScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.mobileRecharge,
+      builder: (context, state) => const MobileRechargeScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.dthRecharge,
+      builder: (context, state) => const DthRechargeScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.fastagRecharge,
+      builder: (context, state) => const FastagRechargeScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.fastagDetail,
+      builder: (context, state) => FastagDetailScreen(
+        bankName: (state.extra as String?) ?? 'FASTag',
+      ),
+    ),
+    GoRoute(
+      path: AppRoutes.ncmcRecharge,
+      builder: (context, state) => const NcmcRechargeScreen(),
     ),
     GoRoute(
       path: AppRoutes.noNetwork,

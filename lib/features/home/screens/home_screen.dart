@@ -449,9 +449,9 @@ class HomeScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               _buildPaymentItem(vw, vh, 'DMT', 'assets/images/DMT.png', [const Color(0xFFE0E0E0), const Color(0xFF47248C)]),
-                              _buildPaymentItem(vw, vh, 'Mobile\nRecharge', 'assets/images/mob_rec.png', [const Color(0xFFE0E0E0), const Color(0xFF47248C)]),
+                              _buildPaymentItem(vw, vh, 'Mobile\nRecharge', 'assets/images/mob_rec.png', [const Color(0xFFE0E0E0), const Color(0xFF47248C)], onTap: () => context.push(AppRoutes.mobileRecharge)),
                               _buildPaymentItem(vw, vh, 'Electricity\nBill', 'assets/images/elec_bill.png', [const Color(0xFFE0E0E0), const Color(0xFF47248C)]),
-                              _buildPaymentItem(vw, vh, 'FASTag\nRecharge', 'assets/images/fastag_rec.png', [const Color(0xFFE0E0E0), const Color(0xFF47248C)]),
+                              _buildPaymentItem(vw, vh, 'FASTag\nRecharge', 'assets/images/fastag_rec.png', [const Color(0xFFE0E0E0), const Color(0xFF47248C)], onTap: () => context.push(AppRoutes.fastagRecharge)),
                             ],
                           ),
                         ),
@@ -1098,8 +1098,11 @@ class HomeScreen extends StatelessWidget {
     double? iconTop,
     double? iconLeft,
     int? maxLines,
+    VoidCallback? onTap,
   }) {
-    return Column(
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
@@ -1170,7 +1173,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ],
-    );
+    ));
   }
 
   Widget _buildServiceItem(double width, double height, double gap, Widget content, String label) {
