@@ -43,6 +43,10 @@ import '../../features/home/screens/fastag_detail_screen.dart';
 import '../../features/home/screens/ncmc_recharge_screen.dart';
 import '../../features/utility/screens/error_screen.dart';
 import '../../features/utility/screens/session_expired_screen.dart';
+import '../../features/home/screens/become_partner_screen.dart';
+import '../../features/home/screens/registration_login_screen.dart';
+import '../../features/home/screens/registration_screen.dart';
+import '../../features/home/screens/register_device_screen.dart';
 import '../shell/main_shell.dart';
 
 class AppRoutes {
@@ -85,6 +89,10 @@ class AppRoutes {
   static const String fastagRecharge = '/fastag-recharge';
   static const String fastagDetail = '/fastag-detail';
   static const String ncmcRecharge = '/ncmc-recharge';
+  static const String becomePartner = '/become-partner';
+  static const String registrationLogin = '/registration-login';
+  static const String registration = '/registration';
+  static const String registerDevice = '/register-device';
   static const String noNetwork = '/no-network';
   static const String error = '/error';
   static const String sessionExpired = '/session-expired';
@@ -95,7 +103,7 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 final appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: AppRoutes.splash,
+  initialLocation: AppRoutes.becomePartner,
   debugLogDiagnostics: true,
   routes: [
     // Splash
@@ -233,6 +241,58 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.ncmcRecharge,
       builder: (context, state) => const NcmcRechargeScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.becomePartner,
+      builder: (context, state) => const BecomePartnerScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.registration,
+      pageBuilder: (context, state) => CustomTransitionPage(
+        key: state.pageKey,
+        child: const RegistrationScreen(),
+        transitionDuration: const Duration(milliseconds: 300),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(1.0, 0.0),
+            end: Offset.zero,
+          ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut)),
+          child: child,
+        ),
+      ),
+    ),
+    GoRoute(
+      path: AppRoutes.registerDevice,
+      pageBuilder: (context, state) => CustomTransitionPage(
+        key: state.pageKey,
+        child: const RegisterDeviceScreen(),
+        transitionDuration: const Duration(milliseconds: 300),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(1.0, 0.0),
+            end: Offset.zero,
+          ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut)),
+          child: child,
+        ),
+      ),
+    ),
+    GoRoute(
+      path: AppRoutes.registrationLogin,
+      pageBuilder: (context, state) => CustomTransitionPage(
+        key: state.pageKey,
+        child: const RegistrationLoginScreen(),
+        transitionDuration: const Duration(milliseconds: 300),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(1.0, 0.0),
+            end: Offset.zero,
+          ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut)),
+          child: child,
+        ),
+      ),
     ),
     GoRoute(
       path: AppRoutes.noNetwork,
