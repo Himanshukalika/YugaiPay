@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/router/app_router.dart';
@@ -25,7 +26,7 @@ class _RegisterDeviceScreenState extends State<RegisterDeviceScreen> {
           children: [
             // ── Header ──
             Padding(
-              padding: const EdgeInsets.fromLTRB(17, 16, 17, 0),
+              padding: EdgeInsets.fromLTRB(17.w, 16.h, 17.w, 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,12 +35,12 @@ class _RegisterDeviceScreenState extends State<RegisterDeviceScreen> {
                     onTap: () => context.pop(),
                     child: Row(
                       children: [
-                        const Icon(Icons.arrow_back, color: _primary, size: 20),
-                        const SizedBox(width: 8),
+                        Icon(Icons.arrow_back, color: _primary, size: 20.sp),
+                        SizedBox(width: 8.w),
                         Text(
                           'Register Device',
                           style: GoogleFonts.manrope(
-                            fontSize: 18,
+                            fontSize: 18.sp,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFF312E81),
                           ),
@@ -48,13 +49,13 @@ class _RegisterDeviceScreenState extends State<RegisterDeviceScreen> {
                     ),
                   ),
                   Container(
-                    width: 32,
-                    height: 32,
+                    width: 32.w,
+                    height: 32.w,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(color: _inputBorder),
                     ),
-                    child: const Icon(Icons.help_outline, color: _textGray, size: 18),
+                    child: Icon(Icons.help_outline, color: _textGray, size: 18.sp),
                   ),
                 ],
               ),
@@ -64,23 +65,21 @@ class _RegisterDeviceScreenState extends State<RegisterDeviceScreen> {
             Expanded(
               child: SingleChildScrollView(
                 physics: const NeverScrollableScrollPhysics(),
-                padding: const EdgeInsets.fromLTRB(24, 16, 24, 16),
+                padding: EdgeInsets.fromLTRB(24.w, 16.h, 24.w, 16.h),
                 child: Column(
                   children: [
-                    // Banner card — 342×192, border-radius:12
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(12.r),
                       child: Image.asset(
                         'assets/images/register_device_banner.jpg',
                         width: double.infinity,
-                        height: 192,
+                        height: 192.h,
                         fit: BoxFit.cover,
                       ),
                     ),
 
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16.h),
 
-                    // Middle section — 342×96, gap:8
                     SizedBox(
                       width: double.infinity,
                       child: Column(
@@ -89,17 +88,17 @@ class _RegisterDeviceScreenState extends State<RegisterDeviceScreen> {
                           Text(
                             'Register this device?',
                             style: GoogleFonts.manrope(
-                              fontSize: 22,
+                              fontSize: 22.sp,
                               fontWeight: FontWeight.w700,
                               color: _textDark,
                             ),
                           ),
-                          const SizedBox(height: 8),
+                          SizedBox(height: 8.h),
                           Text(
                             'Link this device to your YugaiPay account for\nenhanced security and faster transactions.',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.inter(
-                              fontSize: 13,
+                              fontSize: 13.sp,
                               fontWeight: FontWeight.w400,
                               color: _textGray,
                               height: 1.5,
@@ -109,44 +108,31 @@ class _RegisterDeviceScreenState extends State<RegisterDeviceScreen> {
                       ),
                     ),
 
-                    const SizedBox(height: 12),
+                    SizedBox(height: 12.h),
 
-                    // White card 1 — 342×119
-                    _deviceCard(
-                      name: 'Yugai Laptop',
-                      lastActive: 'LAST ACTIVE TODAY AT 11:08 AM',
-                    ),
+                    _deviceCard(name: 'Yugai Laptop',         lastActive: 'LAST ACTIVE TODAY AT 11:08 AM'),
+                    SizedBox(height: 8.h),
+                    _deviceCard(name: 'Vyapar Laptop Mahesh', lastActive: 'LAST ACTIVE 4 MAY, 11:35 AM'),
 
-                    const SizedBox(height: 8),
+                    SizedBox(height: 10.h),
 
-                    // White card 2 — 342×119
-                    _deviceCard(
-                      name: 'Vyapar Laptop Mahesh',
-                      lastActive: 'LAST ACTIVE 4 MAY, 11:35 AM',
-                    ),
-
-                    const SizedBox(height: 10),
-
-                    // Info chip — 342×42
                     Container(
                       width: double.infinity,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 6),
+                      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
                       decoration: BoxDecoration(
                         color: const Color(0x0D461599),
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                            color: const Color(0x1A461599), width: 1),
+                        borderRadius: BorderRadius.circular(12.r),
+                        border: Border.all(color: const Color(0x1A461599), width: 1),
                       ),
                       child: Row(
                         children: [
-                          const Icon(Icons.lock, size: 16, color: Color(0xFF461599)),
-                          const SizedBox(width: 8),
+                          Icon(Icons.lock, size: 16.sp, color: const Color(0xFF461599)),
+                          SizedBox(width: 8.w),
                           Expanded(
                             child: Text(
                               'This device will be registered securely to your account',
                               style: GoogleFonts.inter(
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 fontWeight: FontWeight.w500,
                                 color: _textDark,
                               ),
@@ -155,27 +141,27 @@ class _RegisterDeviceScreenState extends State<RegisterDeviceScreen> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 8),
 
-                    // CTA button
+                    SizedBox(height: 8.h),
+
                     SizedBox(
                       width: double.infinity,
-                      height: 65,
+                      height: 65.h,
                       child: ElevatedButton(
                         onPressed: () => context.go(AppRoutes.login),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: _primary,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.r),
                           ),
-                          padding: const EdgeInsets.only(top: 20, bottom: 18),
+                          padding: EdgeInsets.only(top: 20.h, bottom: 18.h),
                           elevation: 4,
                           shadowColor: const Color(0x0A000000),
                         ),
                         child: Text(
                           'Confirm & Register Device',
                           style: GoogleFonts.manrope(
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.w800,
                             color: Colors.white,
                             letterSpacing: 0.4,
@@ -196,113 +182,83 @@ class _RegisterDeviceScreenState extends State<RegisterDeviceScreen> {
   Widget _deviceCard({required String name, required String lastActive}) {
     return Container(
       width: double.infinity,
-      height: 119,
+      height: 119.h,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: const Color(0x0D000000), width: 1),
         boxShadow: const [
-          BoxShadow(
-            color: Color(0x0A000000),
-            blurRadius: 20,
-            offset: Offset(0, 4),
-          ),
+          BoxShadow(color: Color(0x0A000000), blurRadius: 20, offset: Offset(0, 4)),
         ],
       ),
       child: Column(
         children: [
-          // Top content area
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 14, 16, 8),
+              padding: EdgeInsets.fromLTRB(16.w, 14.h, 16.w, 8.h),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Laptop icon container
                   Container(
-                    width: 48,
-                    height: 48,
+                    width: 48.w,
+                    height: 48.w,
                     decoration: BoxDecoration(
                       color: const Color(0xFFF2EBF7),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(8.r),
                       border: Border.all(color: const Color(0xFFCBC3D5), width: 1),
                     ),
-                    child: const Icon(
-                      Icons.laptop,
-                      color: Color(0xFF461599),
-                      size: 24,
-                    ),
+                    child: Icon(Icons.laptop, color: const Color(0xFF461599), size: 24.sp),
                   ),
-                  const SizedBox(width: 12),
-                  // Device name + last active
+                  SizedBox(width: 12.w),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        name,
-                        style: GoogleFonts.manrope(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          color: _textDark,
-                        ),
-                      ),
-                      const SizedBox(height: 3),
-                      Text(
-                        lastActive,
-                        style: GoogleFonts.inter(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w500,
-                          color: _textGray,
-                          letterSpacing: 0.3,
-                        ),
-                      ),
+                      Text(name,
+                          style: GoogleFonts.manrope(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w700,
+                              color: _textDark)),
+                      SizedBox(height: 3.h),
+                      Text(lastActive,
+                          style: GoogleFonts.inter(
+                              fontSize: 10.sp,
+                              fontWeight: FontWeight.w500,
+                              color: _textGray,
+                              letterSpacing: 0.3)),
                     ],
                   ),
                 ],
               ),
             ),
           ),
-
-          // Footer bar — 340×45
           Container(
-            height: 45,
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-            decoration: const BoxDecoration(
-              color: Color(0x4DF8F1FC),
+            height: 45.h,
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
+            decoration: BoxDecoration(
+              color: const Color(0x4DF8F1FC),
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(12),
-                bottomRight: Radius.circular(12),
+                bottomLeft: Radius.circular(12.r),
+                bottomRight: Radius.circular(12.r),
               ),
-              border: Border(
-                top: BorderSide(color: Color(0x4DCBC3D5), width: 1),
-              ),
+              border: const Border(top: BorderSide(color: Color(0x4DCBC3D5), width: 1)),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
-                    const Icon(Icons.location_on_outlined,
-                        size: 14, color: _textGray),
-                    const SizedBox(width: 4),
-                    Text(
-                      'New Delhi, India',
-                      style: GoogleFonts.inter(
-                        fontSize: 12,
-                        color: _textGray,
-                      ),
-                    ),
+                    Icon(Icons.location_on_outlined, size: 14.sp, color: _textGray),
+                    SizedBox(width: 4.w),
+                    Text('New Delhi, India',
+                        style: GoogleFonts.inter(fontSize: 12.sp, color: _textGray)),
                   ],
                 ),
-                Text(
-                  'Logout',
-                  style: GoogleFonts.inter(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: _primary,
-                  ),
-                ),
+                Text('Logout',
+                    style: GoogleFonts.inter(
+                        fontSize: 13.sp,
+                        fontWeight: FontWeight.w600,
+                        color: _primary)),
               ],
             ),
           ),

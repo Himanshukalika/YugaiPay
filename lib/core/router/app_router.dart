@@ -13,6 +13,8 @@ import '../../features/auth/screens/loading_screen.dart';
 import '../../features/auth/screens/permission_screen.dart';
 import '../../features/auth/screens/permission_screen_2.dart';
 import '../../features/auth/screens/login_screen.dart';
+import '../../features/auth/screens/mpin_login_screen.dart';
+import '../../features/auth/screens/need_help_screen.dart';
 import '../../features/investment/screens/report_screen.dart';
 import '../../features/home/screens/investment_services_screen.dart';
 import '../../features/home/screens/banking_services_screen.dart';
@@ -57,6 +59,8 @@ class AppRoutes {
   static const String permission1 = '/permission1';
   static const String permission2 = '/permission2';
   static const String login = '/login';
+  static const String mpinLogin = '/mpin-login';
+  static const String needHelp = '/need-help';
   static const String signin = '/signin';
   static const String signup = '/signup';
   static const String otp = '/otp';
@@ -137,6 +141,14 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.login,
       builder: (context, state) => const LoginScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.mpinLogin,
+      builder: (context, state) => const MpinLoginScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.needHelp,
+      builder: (context, state) => const NeedHelpScreen(),
     ),
     GoRoute(
       path: AppRoutes.signin,
@@ -234,9 +246,8 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.fastagDetail,
-      builder: (context, state) => FastagDetailScreen(
-        bankName: (state.extra as String?) ?? 'FASTag',
-      ),
+      builder: (context, state) =>
+          FastagDetailScreen(bankName: (state.extra as String?) ?? 'FASTag'),
     ),
     GoRoute(
       path: AppRoutes.ncmcRecharge,
@@ -254,12 +265,15 @@ final appRouter = GoRouter(
         transitionDuration: const Duration(milliseconds: 300),
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             SlideTransition(
-          position: Tween<Offset>(
-            begin: const Offset(1.0, 0.0),
-            end: Offset.zero,
-          ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut)),
-          child: child,
-        ),
+              position:
+                  Tween<Offset>(
+                    begin: const Offset(1.0, 0.0),
+                    end: Offset.zero,
+                  ).animate(
+                    CurvedAnimation(parent: animation, curve: Curves.easeOut),
+                  ),
+              child: child,
+            ),
       ),
     ),
     GoRoute(
@@ -270,12 +284,15 @@ final appRouter = GoRouter(
         transitionDuration: const Duration(milliseconds: 300),
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             SlideTransition(
-          position: Tween<Offset>(
-            begin: const Offset(1.0, 0.0),
-            end: Offset.zero,
-          ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut)),
-          child: child,
-        ),
+              position:
+                  Tween<Offset>(
+                    begin: const Offset(1.0, 0.0),
+                    end: Offset.zero,
+                  ).animate(
+                    CurvedAnimation(parent: animation, curve: Curves.easeOut),
+                  ),
+              child: child,
+            ),
       ),
     ),
     GoRoute(
@@ -286,12 +303,15 @@ final appRouter = GoRouter(
         transitionDuration: const Duration(milliseconds: 300),
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             SlideTransition(
-          position: Tween<Offset>(
-            begin: const Offset(1.0, 0.0),
-            end: Offset.zero,
-          ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut)),
-          child: child,
-        ),
+              position:
+                  Tween<Offset>(
+                    begin: const Offset(1.0, 0.0),
+                    end: Offset.zero,
+                  ).animate(
+                    CurvedAnimation(parent: animation, curve: Curves.easeOut),
+                  ),
+              child: child,
+            ),
       ),
     ),
     GoRoute(

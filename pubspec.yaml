@@ -27,6 +27,7 @@ dependencies:
   shared_preferences: ^2.3.3
 
   # UI
+  flutter_screenutil: ^5.9.3
   google_fonts: ^6.2.1
   vector_math: ^2.1.4
   flutter_svg: ^2.0.16

@@ -1,19 +1,30 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/router/app_router.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class MpinLoginScreen extends StatefulWidget {
+  const MpinLoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<MpinLoginScreen> createState() => _MpinLoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _MpinLoginScreenState extends State<MpinLoginScreen> {
+  final TextEditingController _mpinController = TextEditingController();
+  final FocusNode _mpinFocusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _mpinController.dispose();
+    _mpinFocusNode.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -162,10 +173,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        // Glassmorphic Content Card (Fixed: 345 x 377)
+                        // Glassmorphic Content Card (Fixed: 345 x 417)
                         Container(
                           width: 345,
-                          height: 377,
+                          height: 417,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(32),
                             boxShadow: [
@@ -183,10 +194,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
                               child: Container(
                                 padding: const EdgeInsets.only(
-                                  top: 32,
-                                  right: 31,
-                                  bottom: 32,
-                                  left: 32,
+                                  top: 8,
+                                  right: 21,
+                                  bottom: 16,
+                                  left: 21,
                                 ),
                                 decoration: BoxDecoration(
                                   color: Colors.white.withValues(alpha: 0.9),
@@ -261,13 +272,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                       ),
                                     ),
                                     const SizedBox(height: 24),
-                                    // New Container (282 x 75) with red border
+                                    // New Container (281 x 72)
                                     Container(
-                                      width: 282,
-                                      height: 75,
+                                      width: 303,
+                                      height: 74,
                                       child: Stack(
                                         children: [
-                                          // Content Row (width 282, height 75)
+                                          // Content Row (width 281, height 72)
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
@@ -279,17 +290,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 child: GestureDetector(
                                                   onTap: () {
                                                     context.push(
-                                                      AppRoutes.mpinLogin,
+                                                      AppRoutes.login,
                                                     );
                                                   },
                                                   child: Container(
-                                                    height: 75,
+                                                    height: 72,
                                                     padding:
                                                         const EdgeInsets.only(
                                                           top: 8,
-                                                          bottom: 8,
-                                                          left: 25.16,
-                                                          right: 25.17,
+                                                          bottom: 5,
+                                                          left: 4,
+                                                          right: 4,
                                                         ),
                                                     decoration: BoxDecoration(
                                                       color: const Color(
@@ -309,8 +320,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                                               .center,
                                                       children: [
                                                         Container(
-                                                          width: 40,
-                                                          height: 40,
+                                                          width: 38,
+                                                          height: 38,
                                                           alignment:
                                                               Alignment.center,
                                                           decoration: BoxDecoration(
@@ -325,22 +336,26 @@ class _LoginScreenState extends State<LoginScreen> {
                                                           child:
                                                               SvgPicture.string(
                                                                 _firstCardSvg,
-                                                                width: 23.92,
-                                                                height: 15,
+                                                                width: 22,
+                                                                height: 24,
                                                               ),
                                                         ),
                                                         const SizedBox(
-                                                          height: 4,
+                                                          height: 1,
                                                         ), // 4px Gap
                                                         Container(
-                                                          width: 23.92,
+                                                          width: 80,
                                                           height: 15,
                                                           alignment:
                                                               Alignment.center,
                                                           child: Text(
-                                                            'MPIN',
+                                                            'FINGERPRINT',
                                                             textAlign: TextAlign
                                                                 .center,
+                                                            maxLines: 1,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .visible,
                                                             style: GoogleFonts.manrope(
                                                               fontSize: 10,
                                                               fontWeight:
@@ -361,9 +376,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   ),
                                                 ),
                                               ),
-                                              const SizedBox(
-                                                width: 12,
-                                              ), // 12px Gap
+                                              const SizedBox(width: 8),
                                               // Second Child Container
                                               Expanded(
                                                 child: GestureDetector(
@@ -371,11 +384,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     // Interaction
                                                   },
                                                   child: Container(
-                                                    height: 75,
+                                                    height: 72,
                                                     padding:
                                                         const EdgeInsets.only(
                                                           top: 8,
-                                                          bottom: 8,
+                                                          bottom: 5,
                                                           left: 25.15,
                                                           right: 25.18,
                                                         ),
@@ -397,8 +410,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                                               .center,
                                                       children: [
                                                         Container(
-                                                          width: 40,
-                                                          height: 40,
+                                                          width: 38,
+                                                          height: 38,
                                                           alignment:
                                                               Alignment.center,
                                                           decoration: BoxDecoration(
@@ -418,7 +431,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                               ),
                                                         ),
                                                         const SizedBox(
-                                                          height: 4,
+                                                          height: 1,
                                                         ), // 4px Gap
                                                         Container(
                                                           width: 34.94,
@@ -449,9 +462,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   ),
                                                 ),
                                               ),
-                                              const SizedBox(
-                                                width: 12,
-                                              ), // 12px Gap
+                                              const SizedBox(width: 8),
                                               // Third Child Container
                                               Expanded(
                                                 child: GestureDetector(
@@ -459,11 +470,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     // Interaction
                                                   },
                                                   child: Container(
-                                                    height: 75,
+                                                    height: 72,
                                                     padding:
                                                         const EdgeInsets.only(
                                                           top: 8,
-                                                          bottom: 8,
+                                                          bottom: 5,
                                                           left: 18.09,
                                                           right: 18.09,
                                                         ),
@@ -485,8 +496,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                                               .center,
                                                       children: [
                                                         Container(
-                                                          width: 40,
-                                                          height: 40,
+                                                          width: 38,
+                                                          height: 38,
                                                           alignment:
                                                               Alignment.center,
                                                           decoration: BoxDecoration(
@@ -506,7 +517,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                               ),
                                                         ),
                                                         const SizedBox(
-                                                          height: 4,
+                                                          height: 1,
                                                         ), // 4px Gap
                                                         Container(
                                                           width: 64,
@@ -547,17 +558,144 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ],
                                       ),
                                     ),
-                                    const SizedBox(height: 24),
-                                    // New Row Container (280 x 64)
+                                    const SizedBox(height: 8),
                                     Container(
-                                      width: 280,
-                                      height: 64,
+                                      width: 303,
+                                      height: 76,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(
+                                            width: double.infinity,
+                                            height: 16,
+                                            child: Text(
+                                              'Enter 6-digit MPIN',
+                                              style: GoogleFonts.manrope(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600,
+                                                height: 16 / 12,
+                                                letterSpacing: 0,
+                                                color: const Color(0xFF494453),
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(height: 8),
+                                          GestureDetector(
+                                            onTap: () => FocusScope.of(
+                                              context,
+                                            ).requestFocus(_mpinFocusNode),
+                                            child: SizedBox(
+                                              width: double.infinity,
+                                              height: 48,
+                                              child: Stack(
+                                                children: [
+                                                  Opacity(
+                                                    opacity: 0,
+                                                    child: TextField(
+                                                      controller:
+                                                          _mpinController,
+                                                      focusNode: _mpinFocusNode,
+                                                      keyboardType:
+                                                          TextInputType.number,
+                                                      obscureText: true,
+                                                      maxLength: 6,
+                                                      inputFormatters: [
+                                                        FilteringTextInputFormatter
+                                                            .digitsOnly,
+                                                      ],
+                                                      decoration:
+                                                          const InputDecoration(
+                                                            counterText: '',
+                                                            border: InputBorder
+                                                                .none,
+                                                          ),
+                                                      onChanged: (_) =>
+                                                          setState(() {}),
+                                                    ),
+                                                  ),
+                                                  Row(
+                                                    children: List.generate(
+                                                      6,
+                                                      (index) => Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                right:
+                                                                    index == 5
+                                                                    ? 0
+                                                                    : 3,
+                                                              ),
+                                                          child: Container(
+                                                            height: 48,
+                                                            padding:
+                                                                const EdgeInsets.fromLTRB(
+                                                                  12,
+                                                                  11,
+                                                                  12,
+                                                                  11,
+                                                                ),
+                                                            decoration: BoxDecoration(
+                                                              color:
+                                                                  const Color(
+                                                                    0xFFF3F3F5,
+                                                                  ),
+                                                              borderRadius:
+                                                                  BorderRadius.circular(
+                                                                    12,
+                                                                  ),
+                                                              border: Border.all(
+                                                                color: Colors
+                                                                    .black
+                                                                    .withValues(
+                                                                      alpha: 0,
+                                                                    ),
+                                                                width: 2,
+                                                              ),
+                                                            ),
+                                                            child:
+                                                                index <
+                                                                    _mpinController
+                                                                        .text
+                                                                        .length
+                                                                ? const Center(
+                                                                    child: Text(
+                                                                      '.',
+                                                                      style: TextStyle(
+                                                                        fontSize:
+                                                                            24,
+                                                                        fontWeight:
+                                                                            FontWeight.w700,
+                                                                        color: Color(
+                                                                          0xFF1A1C1D,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  )
+                                                                : null,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(height: 24),
+                                    // New Row Container (308 x 56)
+                                    Container(
+                                      width: 308,
+                                      height: 56,
                                       padding: const EdgeInsets.symmetric(
-                                        vertical: 20,
+                                        vertical: 16,
                                       ),
                                       decoration: BoxDecoration(
                                         color: const Color(0xFF461599),
-                                        borderRadius: BorderRadius.circular(16),
+                                        borderRadius: BorderRadius.circular(12),
                                       ),
                                       child: Row(
                                         mainAxisAlignment:
@@ -565,26 +703,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         children: [
-                                          // Fingerprint SVG Icon (22 x 24)
-                                          SizedBox(
-                                            width: 22,
-                                            height: 24,
-                                            child: SvgPicture.string(
-                                              '''<svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M10.4942 2.85833C12.5553 2.85833 14.4997 3.30069 16.3275 4.18542C18.1553 5.07014 19.6817 6.34861 20.9067 8.02083C21.0428 8.19583 21.0865 8.35139 21.0379 8.4875C20.9893 8.62361 20.9067 8.74028 20.79 8.8375C20.6733 8.93472 20.5372 8.97847 20.3817 8.96875C20.2261 8.95903 20.09 8.87639 19.9733 8.72083C18.9039 7.20417 17.5282 6.04236 15.8462 5.23542C14.1643 4.42847 12.3803 4.025 10.4942 4.025C8.60806 4.025 6.83861 4.42847 5.18583 5.23542C3.53306 6.04236 2.16222 7.20417 1.07333 8.72083C0.956667 8.89583 0.820556 8.99306 0.665 9.0125C0.509444 9.03194 0.373333 8.99306 0.256667 8.89583C0.120556 8.79861 0.0379167 8.67708 0.00875 8.53125C-0.0204167 8.38542 0.0233333 8.23472 0.14 8.07917C1.34556 6.42639 2.85736 5.14306 4.67542 4.22917C6.49347 3.31528 8.43305 2.85833 10.4942 2.85833ZM10.4942 5.6C13.1192 5.6 15.3747 6.475 17.2608 8.225C19.1469 9.975 20.09 12.1431 20.09 14.7292C20.09 15.7014 19.7449 16.5132 19.0546 17.1646C18.3643 17.816 17.5233 18.1417 16.5317 18.1417C15.54 18.1417 14.6893 17.816 13.9796 17.1646C13.2699 16.5132 12.915 15.7014 12.915 14.7292C12.915 14.0875 12.6768 13.5479 12.2004 13.1104C11.724 12.6729 11.1553 12.4542 10.4942 12.4542C9.83306 12.4542 9.26431 12.6729 8.78792 13.1104C8.31153 13.5479 8.07333 14.0875 8.07333 14.7292C8.07333 16.6153 8.63236 18.1903 9.75042 19.4542C10.8685 20.7181 12.3122 21.6028 14.0817 22.1083C14.2567 22.1667 14.3733 22.2639 14.4317 22.4C14.49 22.5361 14.4997 22.6819 14.4608 22.8375C14.4219 22.9736 14.3442 23.0903 14.2275 23.1875C14.1108 23.2847 13.965 23.3139 13.79 23.275C11.7678 22.7694 10.115 21.7632 8.83167 20.2563C7.54833 18.7493 6.90667 16.9069 6.90667 14.7292C6.90667 13.7569 7.25667 12.9403 7.95667 12.2792C8.65667 11.6181 9.5025 11.2875 10.4942 11.2875C11.4858 11.2875 12.3317 11.6181 13.0317 12.2792C13.7317 12.9403 14.0817 13.7569 14.0817 14.7292C14.0817 15.3708 14.3247 15.9104 14.8108 16.3479C15.2969 16.7854 15.8706 17.0042 16.5317 17.0042C17.1928 17.0042 17.7567 16.7854 18.2233 16.3479C18.69 15.9104 18.9233 15.3708 18.9233 14.7292C18.9233 12.4736 18.0969 10.5778 16.4442 9.04167C14.7914 7.50556 12.8178 6.7375 10.5233 6.7375C8.22889 6.7375 6.25528 7.50556 4.6025 9.04167C2.94972 10.5778 2.12333 12.4639 2.12333 14.7C2.12333 15.1667 2.16708 15.75 2.25458 16.45C2.34208 17.15 2.55111 17.9667 2.88167 18.9C2.94 19.075 2.93514 19.2306 2.86708 19.3667C2.79903 19.5028 2.68722 19.6 2.53167 19.6583C2.37611 19.7167 2.22542 19.7118 2.07958 19.6437C1.93375 19.5757 1.83167 19.4639 1.77333 19.3083C1.48167 18.55 1.27264 17.7965 1.14625 17.0479C1.01986 16.2993 0.956667 15.5264 0.956667 14.7292C0.956667 12.1431 1.89486 9.975 3.77125 8.225C5.64764 6.475 7.88861 5.6 10.4942 5.6ZM10.4942 0C11.7386 0 12.9539 0.150694 14.14 0.452083C15.3261 0.753472 16.4733 1.18611 17.5817 1.75C17.7567 1.84722 17.8587 1.96389 17.8879 2.1C17.9171 2.23611 17.9025 2.37222 17.8442 2.50833C17.7858 2.64444 17.6886 2.75139 17.5525 2.82917C17.4164 2.90694 17.2511 2.89722 17.0567 2.8C16.0261 2.275 14.9615 1.87153 13.8629 1.58958C12.7643 1.30764 11.6414 1.16667 10.4942 1.16667C9.36639 1.16667 8.25806 1.29792 7.16917 1.56042C6.08028 1.82292 5.04 2.23611 4.04833 2.8C3.89278 2.89722 3.73722 2.92153 3.58167 2.87292C3.42611 2.82431 3.30944 2.72222 3.23167 2.56667C3.15389 2.41111 3.13444 2.27014 3.17333 2.14375C3.21222 2.01736 3.30944 1.90556 3.465 1.80833C4.55389 1.225 5.69139 0.777778 6.8775 0.466667C8.06361 0.155556 9.26917 0 10.4942 0ZM10.4942 8.42917C12.3025 8.42917 13.8581 9.03681 15.1608 10.2521C16.4636 11.4674 17.115 12.9597 17.115 14.7292C17.115 14.9042 17.0615 15.0451 16.9546 15.1521C16.8476 15.259 16.7067 15.3125 16.5317 15.3125C16.3761 15.3125 16.24 15.259 16.1233 15.1521C16.0067 15.0451 15.9483 14.9042 15.9483 14.7292C15.9483 13.2708 15.4087 12.0507 14.3296 11.0688C13.2504 10.0868 11.9719 9.59583 10.4942 9.59583C9.01639 9.59583 7.74764 10.0868 6.68792 11.0688C5.62819 12.0507 5.09833 13.2708 5.09833 14.7292C5.09833 16.3042 5.37056 17.641 5.915 18.7396C6.45944 19.8382 7.25667 20.9417 8.30667 22.05C8.42333 22.1667 8.48167 22.3028 8.48167 22.4583C8.48167 22.6139 8.42333 22.75 8.30667 22.8667C8.19 22.9833 8.05389 23.0417 7.89833 23.0417C7.74278 23.0417 7.60667 22.9833 7.49 22.8667C6.34278 21.6611 5.46292 20.4313 4.85042 19.1771C4.23792 17.9229 3.93167 16.4403 3.93167 14.7292C3.93167 12.9597 4.57333 11.4674 5.85667 10.2521C7.14 9.03681 8.68583 8.42917 10.4942 8.42917ZM10.465 14.1458C10.64 14.1458 10.781 14.2042 10.8879 14.3208C10.9949 14.4375 11.0483 14.5736 11.0483 14.7292C11.0483 16.1875 11.5733 17.3833 12.6233 18.3167C13.6733 19.25 14.8983 19.7167 16.2983 19.7167C16.415 19.7167 16.5803 19.7069 16.7942 19.6875C17.0081 19.6681 17.2317 19.6389 17.465 19.6C17.64 19.5611 17.7907 19.5854 17.9171 19.6729C18.0435 19.7604 18.1261 19.8917 18.165 20.0667C18.2039 20.2222 18.1747 20.3583 18.0775 20.475C17.9803 20.5917 17.8539 20.6694 17.6983 20.7083C17.3483 20.8056 17.0421 20.859 16.7796 20.8687C16.5171 20.8785 16.3567 20.8833 16.2983 20.8833C14.5678 20.8833 13.0657 20.3 11.7921 19.1333C10.5185 17.9667 9.88167 16.4986 9.88167 14.7292C9.88167 14.5736 9.93514 14.4375 10.0421 14.3208C10.149 14.2042 10.29 14.1458 10.465 14.1458Z" fill="white"/>
-</svg>''',
-                                              width: 22,
-                                              height: 24,
-                                              fit: BoxFit.contain,
-                                            ),
-                                          ),
-                                          const SizedBox(width: 8),
-                                          // "Login using Fingerprint" label (169 x 24)
+                                          // "Login securely" label (169 x 24)
                                           SizedBox(
                                             width: 169,
                                             height: 24,
                                             child: Text(
-                                              'Login using Fingerprint',
+                                              'Login securely',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontFamily: 'Manrope',
@@ -599,77 +723,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ],
                                       ),
                                     ),
-                                    // New Container (280 x 40) padding-top: 16, gap: 44
-                                    Container(
-                                      width: 280,
-                                      height: 40,
-                                      padding: const EdgeInsets.only(top: 16),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          // "Forgot MPIN?" label (89 x 18)
-                                          SizedBox(
-                                            width: 89,
-                                            height: 18,
-                                            child: Text(
-                                              'Forgot MPIN?',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                fontFamily: 'Manrope',
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 14,
-                                                height: 18 / 14,
-                                                letterSpacing: 0,
-                                                color: const Color(0xFF461599),
-                                              ),
-                                            ),
-                                          ),
-                                          const SizedBox(width: 44),
-                                          // "|" Divider (~4.06 x 24)
-                                          SizedBox(
-                                            width: 4.06,
-                                            height: 24,
-                                            child: Text(
-                                              '|',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                fontFamily: 'Manrope',
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 16,
-                                                height: 24 / 16,
-                                                letterSpacing: 0,
-                                                color: const Color(0xFFCBD5E1),
-                                              ),
-                                            ),
-                                          ),
-                                          const SizedBox(width: 44),
-                                          GestureDetector(
-                                            onTap: () {
-                                              context.push(AppRoutes.needHelp);
-                                            },
-                                            child: SizedBox(
-                                              width: 76.03,
-                                              height: 18,
-                                              child: Text(
-                                                'Need Help?',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  fontFamily: 'Manrope',
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 14,
-                                                  height: 18 / 14,
-                                                  letterSpacing: 0,
-                                                  color: const Color(
-                                                    0xFF461599,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                    const SizedBox(height: 24),
+                                    SizedBox(
+                                      width: 308,
+                                      height: 16,
+                                      child: Text(
+                                        'Forgot MPIN?',
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.manrope(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w700,
+                                          height: 16 / 12,
+                                          letterSpacing: 0,
+                                          color: const Color(0xFF461599),
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -987,8 +1054,8 @@ const _arrowSvg =
 </svg>''';
 
 const _firstCardSvg =
-    '''<svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1 12V10H21V12H1ZM2.15 5.95L0.85 5.2L1.7 3.7H0V2.2H1.7L0.85 0.75L2.15 0L3 1.45L3.85 0L5.15 0.75L4.3 2.2H6V3.7H4.3L5.15 5.2L3.85 5.95L3 4.45L2.15 5.95ZM10.15 5.95L8.85 5.2L9.7 3.7H8V2.2H9.7L8.85 0.75L10.15 0L11 1.45L11.85 0L13.15 0.75L12.3 2.2H14V3.7H12.3L13.15 5.2L11.85 5.95L11 4.45L10.15 5.95ZM18.15 5.95L16.85 5.2L17.7 3.7H16V2.2H17.7L16.85 0.75L18.15 0L19 1.45L19.85 0L21.15 0.75L20.3 2.2H22V3.7H20.3L21.15 5.2L19.85 5.95L19 4.45L18.15 5.95Z" fill="#461599"/>
+    '''<svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.4942 2.85833C12.5553 2.85833 14.4997 3.30069 16.3275 4.18542C18.1553 5.07014 19.6817 6.34861 20.9067 8.02083C21.0428 8.19583 21.0865 8.35139 21.0379 8.4875C20.9893 8.62361 20.9067 8.74028 20.79 8.8375C20.6733 8.93472 20.5372 8.97847 20.3817 8.96875C20.2261 8.95903 20.09 8.87639 19.9733 8.72083C18.9039 7.20417 17.5282 6.04236 15.8462 5.23542C14.1643 4.42847 12.3803 4.025 10.4942 4.025C8.60806 4.025 6.83861 4.42847 5.18583 5.23542C3.53306 6.04236 2.16222 7.20417 1.07333 8.72083C0.956667 8.89583 0.820556 8.99306 0.665 9.0125C0.509444 9.03194 0.373333 8.99306 0.256667 8.89583C0.120556 8.79861 0.0379167 8.67708 0.00875 8.53125C-0.0204167 8.38542 0.0233333 8.23472 0.14 8.07917C1.34556 6.42639 2.85736 5.14306 4.67542 4.22917C6.49347 3.31528 8.43305 2.85833 10.4942 2.85833ZM10.4942 5.6C13.1192 5.6 15.3747 6.475 17.2608 8.225C19.1469 9.975 20.09 12.1431 20.09 14.7292C20.09 15.7014 19.7449 16.5132 19.0546 17.1646C18.3643 17.816 17.5233 18.1417 16.5317 18.1417C15.54 18.1417 14.6893 17.816 13.9796 17.1646C13.2699 16.5132 12.915 15.7014 12.915 14.7292C12.915 14.0875 12.6768 13.5479 12.2004 13.1104C11.724 12.6729 11.1553 12.4542 10.4942 12.4542C9.83306 12.4542 9.26431 12.6729 8.78792 13.1104C8.31153 13.5479 8.07333 14.0875 8.07333 14.7292C8.07333 16.6153 8.63236 18.1903 9.75042 19.4542C10.8685 20.7181 12.3122 21.6028 14.0817 22.1083C14.2567 22.1667 14.3733 22.2639 14.4317 22.4C14.49 22.5361 14.4997 22.6819 14.4608 22.8375C14.4219 22.9736 14.3442 23.0903 14.2275 23.1875C14.1108 23.2847 13.965 23.3139 13.79 23.275C11.7678 22.7694 10.115 21.7632 8.83167 20.2563C7.54833 18.7493 6.90667 16.9069 6.90667 14.7292C6.90667 13.7569 7.25667 12.9403 7.95667 12.2792C8.65667 11.6181 9.5025 11.2875 10.4942 11.2875C11.4858 11.2875 12.3317 11.6181 13.0317 12.2792C13.7317 12.9403 14.0817 13.7569 14.0817 14.7292C14.0817 15.3708 14.3247 15.9104 14.8108 16.3479C15.2969 16.7854 15.8706 17.0042 16.5317 17.0042C17.1928 17.0042 17.7567 16.7854 18.2233 16.3479C18.69 15.9104 18.9233 15.3708 18.9233 14.7292C18.9233 12.4736 18.0969 10.5778 16.4442 9.04167C14.7914 7.50556 12.8178 6.7375 10.5233 6.7375C8.22889 6.7375 6.25528 7.50556 4.6025 9.04167C2.94972 10.5778 2.12333 12.4639 2.12333 14.7C2.12333 15.1667 2.16708 15.75 2.25458 16.45C2.34208 17.15 2.55111 17.9667 2.88167 18.9C2.94 19.075 2.93514 19.2306 2.86708 19.3667C2.79903 19.5028 2.68722 19.6 2.53167 19.6583C2.37611 19.7167 2.22542 19.7118 2.07958 19.6437C1.93375 19.5757 1.83167 19.4639 1.77333 19.3083C1.48167 18.55 1.27264 17.7965 1.14625 17.0479C1.01986 16.2993 0.956667 15.5264 0.956667 14.7292C0.956667 12.1431 1.89486 9.975 3.77125 8.225C5.64764 6.475 7.88861 5.6 10.4942 5.6ZM10.4942 0C11.7386 0 12.9539 0.150694 14.14 0.452083C15.3261 0.753472 16.4733 1.18611 17.5817 1.75C17.7567 1.84722 17.8587 1.96389 17.8879 2.1C17.9171 2.23611 17.9025 2.37222 17.8442 2.50833C17.7858 2.64444 17.6886 2.75139 17.5525 2.82917C17.4164 2.90694 17.2511 2.89722 17.0567 2.8C16.0261 2.275 14.9615 1.87153 13.8629 1.58958C12.7643 1.30764 11.6414 1.16667 10.4942 1.16667C9.36639 1.16667 8.25806 1.29792 7.16917 1.56042C6.08028 1.82292 5.04 2.23611 4.04833 2.8C3.89278 2.89722 3.73722 2.92153 3.58167 2.87292C3.42611 2.82431 3.30944 2.72222 3.23167 2.56667C3.15389 2.41111 3.13444 2.27014 3.17333 2.14375C3.21222 2.01736 3.30944 1.90556 3.465 1.80833C4.55389 1.225 5.69139 0.777778 6.8775 0.466667C8.06361 0.155556 9.26917 0 10.4942 0ZM10.4942 8.42917C12.3025 8.42917 13.8581 9.03681 15.1608 10.2521C16.4636 11.4674 17.115 12.9597 17.115 14.7292C17.115 14.9042 17.0615 15.0451 16.9546 15.1521C16.8476 15.259 16.7067 15.3125 16.5317 15.3125C16.3761 15.3125 16.24 15.259 16.1233 15.1521C16.0067 15.0451 15.9483 14.9042 15.9483 14.7292C15.9483 13.2708 15.4087 12.0507 14.3296 11.0688C13.2504 10.0868 11.9719 9.59583 10.4942 9.59583C9.01639 9.59583 7.74764 10.0868 6.68792 11.0688C5.62819 12.0507 5.09833 13.2708 5.09833 14.7292C5.09833 16.3042 5.37056 17.641 5.915 18.7396C6.45944 19.8382 7.25667 20.9417 8.30667 22.05C8.42333 22.1667 8.48167 22.3028 8.48167 22.4583C8.48167 22.6139 8.42333 22.75 8.30667 22.8667C8.19 22.9833 8.05389 23.0417 7.89833 23.0417C7.74278 23.0417 7.60667 22.9833 7.49 22.8667C6.34278 21.6611 5.46292 20.4313 4.85042 19.1771C4.23792 17.9229 3.93167 16.4403 3.93167 14.7292C3.93167 12.9597 4.57333 11.4674 5.85667 10.2521C7.14 9.03681 8.68583 8.42917 10.4942 8.42917ZM10.465 14.1458C10.64 14.1458 10.781 14.2042 10.8879 14.3208C10.9949 14.4375 11.0483 14.5736 11.0483 14.7292C11.0483 16.1875 11.5733 17.3833 12.6233 18.3167C13.6733 19.25 14.8983 19.7167 16.2983 19.7167C16.415 19.7167 16.5803 19.7069 16.7942 19.6875C17.0081 19.6681 17.2317 19.6389 17.465 19.6C17.64 19.5611 17.7907 19.5854 17.9171 19.6729C18.0435 19.7604 18.1261 19.8917 18.165 20.0667C18.2039 20.2222 18.1747 20.3583 18.0775 20.475C17.9803 20.5917 17.8539 20.6694 17.6983 20.7083C17.3483 20.8056 17.0421 20.859 16.7796 20.8687C16.5171 20.8785 16.3567 20.8833 16.2983 20.8833C14.5678 20.8833 13.0657 20.3 11.7921 19.1333C10.5185 17.9667 9.88167 16.4986 9.88167 14.7292C9.88167 14.5736 9.93514 14.4375 10.0421 14.3208C10.149 14.2042 10.29 14.1458 10.465 14.1458Z" fill="#461599"/>
 </svg>''';
 
 const _secondCardSvg =
